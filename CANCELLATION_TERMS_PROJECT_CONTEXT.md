@@ -490,15 +490,9 @@ word block region:
 전체 약 9만 자 corpus를 웹에서 전부 재생하면 시간이 지나치게 길어져, Prompt B 웹 버전은 **편집된 corpus**를 사용한다.
 
 현재 편집된 텍스트:
-- 약 5,841 characters
-- 처음 Netflix 약관에서 시작
-- 이후 쿠팡 와우/로켓프레시 에코 서비스 구간까지
-- 문장이 자연스럽게 끝나는 지점에서 종료
-
-중요:
-- 이 5,841자 텍스트 볼륨은 현재 유지
-- 임의로 줄이거나 늘리지 말 것
-- 변경이 필요하면 먼저 사용자와 논의
+- 11,703 characters
+- 이전 5,841자 편집본의 약 두 배
+- 전체 전문의 앞부분에서 문장이 자연스럽게 끝나는 지점까지 사용
 
 ---
 
@@ -521,12 +515,12 @@ netflix.com 웹사이트로 이동하여 ‘계정’ 페이지를 클릭하면 
 
 가속 후:
 ```text
-180 chars/sec
+150 chars/sec
 ```
 
 최신 결정:
 - 더 이상 180 → 240 / 360 / 840처럼 증가하지 않는다.
-- **가속 후 180 chars/sec로 끝까지 고정**
+- **가속 후 150 chars/sec로 끝까지 고정**
 
 즉:
 
@@ -535,7 +529,7 @@ netflix.com 웹사이트로 이동하여 ‘계정’ 페이지를 클릭하면 
 ↓
 target sentence begins
 ↓
-180 cps
+150 cps
 ↓
 end
 ```
@@ -553,7 +547,7 @@ end
 
 ### 진행 중 SPACE HOLD
 ```text
-SPACE held → 30 chars/sec
+SPACE held → 가속 구간을 60 chars/sec로 감속 (초반 30 chars/sec 구간은 유지)
 SPACE released → normal current speed
 ```
 
@@ -572,7 +566,7 @@ SPACE released → normal current speed
 
 ---
 
-# 13. 현재 두 가지 Mode — 최신 v8 방향
+# 13. 현재 두 가지 Mode — 최신 v9 방향
 
 현재 랜딩에서 **두 가지 탐색 방식**을 선택한다.
 
@@ -596,28 +590,20 @@ SPACE released → normal current speed
 ## AUTO
 
 설명:
-> 약 1분 동안 약관의 흐름을 자동으로 따라갑니다.
+> 생성되는 약관의 흐름을 자동으로 따라갑니다.
 
 행동:
 - 시스템이 자동으로 passage를 통과
 - 붉은 word fragment 역시 자동 scroll event에 의해 생성
-- SPACE HOLD 동안 읽기 속도로 감속
-- SPACE HOLD 시간 동안 AUTO clock도 함께 pause
-- 따라서 “읽기 위해 저항한 시간”만큼 목적지 도달도 늦어짐
+- SPACE HOLD 동안 60 chars/sec로 감속
+- AUTO scroll은 멈추지 않고 실제 타이핑 끝점을 느리게 따라감
+- 읽기 위해 저항한 시간만큼 목적지 도달도 늦어짐
 
 AUTO timing:
-
-```text
-약관 통과 약 56초
-+
-Print handoff 약 4초
-=
-총 약 60초
-```
-
-텍스트 생성 자체는 약 40초 정도에 끝날 수 있지만,
-AUTO passage는 약 56초 동안 계속 진행되어
-이미 생성된 정보의 흔적과 잔상을 통과한다.
+- 고정 56초 passage clock을 사용하지 않음
+- 11,703자 corpus의 실제 생성 끝점을 viewport 75%에서 추적
+- SPACE를 누르면 생성과 스크롤이 함께 느려짐
+- 완료 후 Print handoff는 약 4초
 
 개념:
 > 시스템이 나를 약관의 끝까지 데려간다.
@@ -631,8 +617,7 @@ AUTO passage는 약 56초 동안 계속 진행되어
 서사:
 
 ```text
-해지하기 전, 아직 읽지 않은 문장들이 남아 있습니다.
-같은 약관을 두 가지 방식으로 통과할 수 있습니다.
+문장을 통과하는 방식을 선택하세요.
 ```
 
 Mode:
@@ -734,7 +719,7 @@ CSS 기본 방향:
 
 ## AUTO
 
-- 약 56초 동안 실제 끝까지 이동
+- 실제 타이핑 끝점을 따라 끝까지 이동
 - Print 영역 unlock
 - 이후 약 4초 동안 부드러운 handoff
 - Print area center에 자연스럽게 이동
@@ -983,10 +968,10 @@ harsh red
 
 ---
 
-## 4. AUTO 60초 rhythm
+## 4. AUTO rhythm
 
 현재:
-- passage 56초
+- passage는 실제 타이핑 끝점을 추적
 - print handoff 4초
 
 실제 브라우저에서:
@@ -1080,19 +1065,19 @@ harsh red
 이 Markdown이 생성된 시점에서 가장 최신 개발 버전:
 
 ```text
-Prompt B v8
+Prompt B v9
 index.html
 style.css
 Cancellation-Terms_Hard-copy_Flip-Book.pdf
 ```
 
-v8의 핵심:
+v9의 핵심:
 - MANUAL / AUTO mode
-- AUTO ≈ 60 seconds
+- AUTO = live typing-edge follow
 - MANUAL = direct scroll
-- SPACE = hold to read
-- typing 30 → 180 fixed
-- 5,841-character edited corpus
+- SPACE = hold to read at 60 chars/sec without stopping
+- typing 30 → 150 fixed
+- 11,703-character edited corpus
 - typing point 75%
 - bottom 25vh breathing space
 - fragment region 25%–75%

@@ -87,7 +87,7 @@ button {
 }
 
 .guide-text {
-    width: min(680px, calc(100vw - 3rem));
+    width: min(960px, calc(100vw - 3rem));
     color: var(--color-text);
     text-align: center;
 
@@ -113,19 +113,22 @@ button {
         Georgia,
         "Times New Roman",
         serif;
-    font-size: clamp(24px, 2.35vw, 38px);
+    font-size: clamp(23px, 2vw, 34px);
     font-weight: 700;
     line-height: 1.38;
     letter-spacing: -0.035em;
 }
 
+.landing-narrative p {
+    white-space: nowrap;
+}
 
 .mode-selector {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
 
-    width: min(600px, 100%);
+    width: min(720px, 100%);
     margin: clamp(42px, 6vh, 68px) auto 0;
 
     font-family:
@@ -611,6 +614,14 @@ html.is-accelerated .scroll-progress {
 }
 
 @media screen and (max-width: 640px) {
+    .guide-text {
+        width: calc(100vw - 2rem);
+    }
+
+    .landing-narrative p {
+        white-space: normal;
+    }
+
     .mode-selector {
         grid-template-columns: 1fr;
         width: min(360px, 100%);
