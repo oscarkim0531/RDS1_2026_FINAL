@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation Terms</title>
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        (function(d) {
+            var config = {
+            kitId: 'nfx4doc',
+            scriptTimeout: 3000,
+            async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
+</head>
+<body>
+
+    <div id="landingLayer" class="landing-layer" aria-label="Cancellation Terms 시작 안내">
+        <div id="guideText" class="guide-text">
+            <div class="landing-narrative">
+                <p>해지하기 전, 아직 읽지 않은 문장들이 남아 있습니다.</p>
+                <p>같은 약관을 두 가지 방식으로 통과할 수 있습니다.</p>
+            </div>
+
+            <div class="mode-selector" id="modeSelector" aria-label="탐색 방식 선택">
+                <button class="mode-option" type="button" data-mode="manual" aria-pressed="false">
+                    <span class="mode-option__name">MANUAL</span>
+                    <span class="mode-option__description">전체 약관을 펼친 뒤 직접 스크롤합니다.</span>
+                </button>
+
+                <button class="mode-option is-selected" type="button" data-mode="auto" aria-pressed="true">
+                    <span class="mode-option__name">AUTO</span>
+                    <span class="mode-option__description">약 1분 동안 약관의 흐름을 자동으로 따라갑니다.</span>
+                </button>
+            </div>
+
+            <div class="landing-controls" aria-label="인터랙션 안내">
+                <p class="landing-start">
+                    <span class="landing-key">← / →</span>
+                    <span>모드 선택</span>
+                    <span class="landing-separator">·</span>
+                    <span class="landing-key">SPACE</span>
+                    <span>시작하기</span>
+                </p>
+
+                <p class="landing-hold" data-mode-hint="auto">
+                    진행 중에는 <span class="landing-key landing-key--inline">SPACE</span>를
+                    누르고 있는 동안 흐름이 느려집니다.
+                </p>
+
+                <p class="landing-hold" data-mode-hint="manual" hidden>
+                    시작하면 전체 약관이 펼쳐집니다. 원하는 속도로 직접 통과하세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dossier-container">
+        <main class="matrix-grid">
+            
+            <div class="grid-spacer" aria-hidden="true">
+                <div class="scroll-indicator">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-head"></div>
+                </div>
+            </div>
+
+            <div class="layer-3-group" id="layer3Group">
+                <svg class="trace-line-canvas" id="lineCanvas"></svg>
+            </div>
+
+            <div class="layer-1-active" id="layer1Active"></div>
+
+            <article class="text-stream-zone" id="dossierMatrix">
+                <div class="layer-2-text-base" id="textBase">
+                    3.1. 결제 주기. Netflix 서비스 멤버십 요금과 서비스 이용과 관련해 발생하는 기타 청구 금액(예: 세금, 거래 수수료 등)은 ‘계정’ 페이지에 표시된 결제일에 등록된 결제 수단으로 청구됩니다. 결제 주기는 회원이 Netflix 가입 시 선택한 멤버십 유형에 따라 결정됩니다. 등록된 결제 수단에 따른 결제가 정상적으로 처리되지 않거나, 특정 월에 존재하지 않는 날짜에 유료 멤버십이 시작된 경우이거나, 회원이 멤버십 유형을 변경하는 경우 등의 일부 상황에서는 요금 결제일이 변경될 수 있습니다. netflix.com 웹사이트로 이동하여 ‘계정’ 페이지를 클릭하면 다음 결제일을 확인할 수 있습니다. 제3자 계정을 결제 수단으로 사용하여 Netflix에 가입한 경우에는, 해당 제3자 계정에서 회원의 Netflix 멤버십 결제 정보를 확인할 수 있습니다. 3.2. 결제 수단. Netflix 서비스를 이용하려면 하나 이상의 결제 수단을 제공해야 합니다. 미결제 금액에 대한 책임은 회원에게 있습니다. 유효기간 만료, 잔고 부족 등의 사유로 결제가 정상적으로 처리되지 않았는데도 회원이 계정을 해지하지 않는 경우, 유효한 결제 수단에 청구가 완료될 때까지 회원의 서비스 이용이 제한될 수 있습니다. 일부 결제 수단의 경우, 발급자가 회원에게 해외 거래 수수료나 기타 결제 수단 처리 관련 수수료 등의 수수료를 청구할 수 있습니다. 현지 세금은 사용된 결제 수단에 따라 달라질 수 있습니다. 자세한 사항은 해당 결제 서비스 제공업체를 통해 확인하시기 바랍니다. 3.3. 결제 수단 업데이트. 회원은 ‘계정’ 페이지로 이동하여 결제 수단을 업데이트할 수 있습니다. Netflix에서도 해당 결제 서비스 제공업체에서 제공하는 정보를 이용하여 회원의 결제 수단을 업데이트할 수 있습니다. 업데이트를 하는 경우, 회원은 Netflix가 해당 결제 수단으로 계속 청구하는 것을 승인하는 것입니다. 회원은 기본 결제 수단이 승인 거절되거나 이를 멤버십 요금 결제에 더 이상 사용될 수 없는 경우, Netflix가 회원의 계정에 연결된 다른 결제 수단으로 청구하는 것을 승인합니다. 3.4. 해지. 회원은 언제라도 Netflix 멤버십을 해지할 수 있으며, 이 경우 결제 주기가 종료될 때까지는 Netflix 서비스를 계속 이용할 수 있습니다. 본 약관 3.5에서 정한 요건을 충족하는 해지와 Netflix의 고의 또는 과실을 이유로 한 환불 의무를 제외하고, 멤버십을 이용하지 않은 기간이나 이용하지 않은 Netflix 콘텐츠에 대한 환불 또는 크레딧은 제공되지 않습니다. 계정을 해지하려면 ‘계정’ 페이지로 이동하여 해지 관련 안내를 따르시기 바랍니다. 멤버십을 해지하는 경우, 계정은 현재 결제 주기가 종료될 때 자동으로 해지됩니다. 다만, 본 약관 3.5조에 따라 해지를 요청한 경우, 계정은 즉시 해지됩니다. ‘계정’ 페이지에서 계정 종료일을 확인할 수 있습니다. 회원이 제3자 계정을 결제 수단으로 사용하여 Netflix에 가입한 경우, 계정을 해지하려면 (예를 들어, 해당 제3자 계정에 접속해 자동 갱신을 해제하거나 해당 제3자를 통해 Netflix 서비스 멤버십을 해지하는 등) 해당 제3자를 통해서 해지해야 할 수도 있습니다. 3.5. 환불 요청. 회원이 결제일로부터 7일 이내에 Netflix 멤버십을 해지하고 그동안 해당 계정으로 Netflix 콘텐츠를 이용하지 않는 경우, 회원은 해당 결제 주기에 청구된 멤버십 요금을 전액 환불 요청할 수 있습니다. 3.6. 요금 및 멤버십 변경. Netflix는 서비스 요금 및 멤버십을 변경할 수 있습니다. Netflix는 서비스 요금 및 멤버십의 변경에 대하여 적용 시기 등을 포함하여 회원에게 통지하여 동의를 받습니다. 회원은 해당 변경에 동의하지 않는 경우 Netflix 멤버십을 해지할 수 있습니다. 와우 멤버십 서비스 이용 약관 제１조 (목적) 본 약관은 쿠팡 주식회사(이하 “회사”)가 운영하는 웹사이트, 모바일 웹 및 앱 등에서 제공하는 와우 멤버십 서비스를 이용하고자 하는 자와 회사 간의 권리·의무, 서비스 이용절차 및 기타 제반사항을 정함에 그 목적이 있다. 제２조 (용어의 정의) ① 와우 멤버십 서비스(이하 “본 서비스”라고 한다)란, 대상회원이 와우 멤버십으로 가입함으로써 회사가 대상회원에게 추가적으로 제공하는 각종 서비스 및 관련 부가서비스 일체를 의미한다. ② 회원이란, 『쿠팡 이용약관』에 동의하고 그 서비스를 이용하는 자로서, 본 서비스를 이용하기 위해 본 약관에 동의한 자를 의미한다. ③ 대상회원이란, 『쿠팡 이용약관』에 동의하고 그 서비스를 이용하는 자로서, 본 서비스 중 개별 서비스를 이용할 수 있는 요건을 갖춘 자를 의미한다. ④ 대상 서비스이란, 회사가 제공하는 본 서비스 중 회사가 개별 서비스에 대한 상세 설명을 통해 지정한 서비스를 의미한다. ⑤ 대상지역이란, 회사가 제공하는 본 서비스 중 회사가 개별 서비스에 대한 상세 설명을 통해 지정한 지역을 의미한다. ⑥ 결제수단이란, 쿠팡페이 주식회사가 제공하는 정기 결제 서비스의 이용이 가능한 신용카드(체크카드 포함), 본인 명의의 수시입출금 통장, 쿠팡캐시 등(쿠팡캐시, 쿠페이머니, 포인트 등 명칭에 상관없이 대금 지급 수단으로 활용할 수 있는 결제수단 등 포함)을 말한다. 제３조 (서비스의 제공 및 변경) ① 대상회원, 대상상품, 대상지역의 범위 및 대상 서비스의 내용 등은 회사의 사정에 따라 변경될 수 있으며, 그 변경으로 인하여 본 회원이 본 서비스를 중도에 이용하지 못하게 된 경우 회사는 본 약관 제10조의 규정에 따라 환불한다. ② 회사는 대상회원 또는 본 회원의 전부 또는 일부를 대상으로 다음 각호에서 정하는 혜택 등을 제공하는 이벤트, 프로모션 등을 일시적 또는 상시적으로 진행할 수 있다. 이때 제공하는 혜택의 내용, 대상, 기한, 이용방법 등은 각 이벤트, 프로모션 또는 회사의 정책에 따라 변경될 수 있다. 1. 체험 혜택 기간 부여: 별도의 이용료를 지불하지 않거나, 할인된 이용료를 지불하고 본 서비스의 전부 또는 일부를 이용할 수 있는 혜택 2. 할인쿠폰 제공: 상품 등을 구매할 때나 회사가 제공하는 서비스를 이용할 때 표시된 금액 또는 비율만큼 할인 받을 수 있는 쿠폰 3. 쿠팡캐시 적립. 단, 마케팅 및 프로모션을 통하여 지급되는 쿠팡캐시는 무상의 쿠팡캐시로 무상의 쿠팡캐시에 관한 회사의 정책이 적용된다. 4. 제휴 서비스의 제공 5. 기타 회사가 직접 또는 제3자를 통해 제공하는 추가적인 혜택 등 ③ 이용료 액수가 변경된 경우에는 이용료가 결제된 시점에 회원에게 별도로 새로운 동의를 받아야 한다. ④ 회사는 본 서비스에 부수하는 개별 서비스에 대한 세부정책을 별도로 정하여 회원에게 통지할 수 있으며, 이 경우 개별 서비스에 대한 세부정책이 본 약관에 우선한다. 제４조 (서비스 가입 신청) ① 본 서비스는 대상회원이 본 서비스를 위한 약관에 동의함으로써 가입 신청할 수 있다. ② 회사는 대상회원에게 『쿠팡 이용약관』상 결격사유가 없으면 가입 신청을 승인하며, 대상회원은 회사가 가입 신청을 승인하는 즉시 본 회원이 된다. ③ 본 약관 제3조 제2항에 따라 무료로 본 서비스의 전부 또는 일부를 이용 중인 대상회원의 경우, 해당 기간 동안에 한하여 본 회원에 준하는 것으로 보며, 본 약관 및 이용료 결제 등에 동의함으로써 본 회원이 된다. 제５조 (추가 정보의 수집) 회사는 본 서비스를 제공하기 위하여 필수적으로 요구되는 정보를 별도의 동의 없이 추가로 수집할 수 있다. 다만, 수집하는 정보가 개인정보에 해당하는 경우 관련 법령 및 『쿠팡 이용약관』상의 개인정보 보호 규정을 준수해야 한다. 제６조 (본 회원의 의무) 회원은 회사로부터 본 서비스의 수령 및 이용료의 결제를 위해 회원 본인의 정보를 최신으로 유지하여야 하며, 회사는 회원정보가 부정확하여 발생하는 불이익에 대하여는 책임지지 않는다. 제７조 (회사의 통지 의무) ① 회사는 회원에게 본 서비스의 개별 서비스에 대해 설명하여야 하고, 서비스 내용의 변경이 있는 경우, 이를 회원에게 통지하여야 한다. ② 회원의 이용료가 결제된 경우 회사는 회원에게 결제 사실을 통지하여야 한다. 제８조 (금지행위) ① 회원은 이 약관에 따른 회원의 권리, 의무의 전부 또는 일부를 타인에게 대여, 양도, 위임할 수 없다. ② 회원은 본 서비스의 정상적인 운영 또는 다른 회원의 본 서비스 이용을 방해하는 행위를 하여서는 아니된다. 제９조 (결제 및 해지) ① 회원은 본 서비스의 이용료 결제를 위한 결제수단을 등록 또는 보유하여야 하며, 회원은 등록 또는 보유한 결제수단으로 이용료를 계속 청구하는 것에 동의한다. 회원이 다수의 결제수단을 등록 또는 보유한 경우, 회원은 여러 결제수단 중 서비스 이용료 결제를 위해 우선적으로 사용할 결제수단을 지정할 수 있다. 단, 지정된 결제수단으로의 결제가 실패할 경우 회사가 정한 세부정책에 따라 결제수단을 변경하여 결제할 수 있다. ② 회원의 잔액 부족, 한도 초과, 결제 오류 등 기타 여하한 사유로 이용료의 결제가 이루어 지지 않을 경우, 회원은 회사가 고지한 재결제기한 내에 결제 정보를 재등록, 수정하는 등 정상적으로 결제가 이루어질 수 있도록 필요한 조치를 취하여야 한다. ③ 본조 제2항의 경우, 회사는 재결제가 이루어질 때까지 일시적으로 서비스의 일부 또는 전부의 제공을 제한할 수 있으며, 서비스 재개를 위해 회원이 등록 또는 보유한 결제수단을 이용하여 주기적으로 이용료의 결제를 시도할 수 있다. ④ 재결제기한 내에 이용료의 결제가 이루어진 경우, 해당일로부터 서비스의 제공을 재개하기로 하며, 재결제기한 내에 이용료의 결제가 이루어지지 않은 경우에는 서비스 이용 계약은 자동 해지된다. ⑤ 회원은 언제든지 탈퇴함으로써 본 서비스의 이용을 해지할 수 있다. 제1０조 (환불) ① 회사는 본 서비스 및 개별 서비스에 대하여 결제 및 환불 조건과 그 변경 내용에 대해 회원에게 설명하여야 한다. ② 회원이 이용료를 결제한 이후 본 서비스가 중도에 해지되는 경우, 다음 각 호를 기준으로 환불 진행 여부를 결정할 수 있다. A.회원이 이용료 결제 후 이용료를 결제한 해당 월에 본 서비스를 단 한 번도 이용하지 않은 경우: 해당 월 이용료 전액 환불 B.회원이 이용료 결제 후 이용료를 결제한 해당 월에 본 서비스를 1회 이상 이용한 경우: 특별한 사정이 없는 한 환불 불가 제１1조 (기타) 본 약관과 『쿠팡 이용 약관』이 상충하는 경우 본 약관이 우선하여 적용되고, 본 약관에서 규정하지 않은 사항은 『쿠팡 이용 약관』을 적용한다. 본 약관은 2025년 12월 26일자로 개정됨 세부정책: 로켓프레시 에코 서비스 제1조(목적) 본 정책은 본 약관 제3조 6항에 따라 회사가 제공하는 개별 서비스 중 하나인 ‘로켓프레시 에코 서비스’를 제공하는 것과 관련하여 회원과 회사간에 필요한 사항을 규정함을 목적으로 한다. 제2조(로켓프레시 에코 서비스의 제공) ① 회원이 와우 멤버십 서비스를 이용하여 로켓프레시 상품을 주문하는 경우, 주문 상품은 냉장/냉동용 신선 식품을 보관할 수 있는 가방(이하 ‘프레시백’)으로 배송될 수 있으며, 회원은 상품과 함께 배송받은 프레시백을 회사가 정한 방법으로 반납하여야 한다. ② 회원이 프레시백을 일정 기간 이상 반납하지 않는 경우 회사가 사전에 안내한 내용에 따라 회원이 최근에 사용한 결제 수단으로 “지연 사용료”가 부과되며, 프레시백을 반납하는 경우 부과된 지연 사용료는 환불된다. ③ 회원이 프레시백을 일정 수량 이상 보관하거나 일정 기간 이상 반납하지 않을 경우, 회사는 해당 회원에게 로켓프레시 에코 서비스를 제공하지 않을 수 있으며, 위와 같은 상황이 지속되는 경우 해당 회원에게 영구적으로 로켓프레시 에코 서비스의 제공을 중단할 수 있다. ④ 회원이 로켓프레시 에코 서비스의 이용을 원하지 않을 경우, 회사가 정한 방법에 따라 프레시 에코 서비스의 이용을 중단할 수 있다.
+                </div>
+            </article>
+        </main>
+
+        <div class="scroll-progress" id="scrollProgress"
+             role="progressbar"
+             aria-label="전체 해지약관 통과 진행률"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             aria-valuenow="0">
+            <div class="scroll-progress__readout">
+                <span class="scroll-progress__number" id="scrollProgressValue">00</span>
+                <span class="scroll-progress__unit" aria-hidden="true">%</span>
+            </div>
+            <div class="scroll-progress__track" aria-hidden="true">
+                <span class="scroll-progress__fill"></span>
+            </div>
+        </div>
+
+        <section class="print-trigger-area is-locked" id="printTriggerArea" aria-label="Prompt C print transition">
+            <div class="session-record" id="sessionRecord" aria-live="polite">
+                <span class="session-record__label">PASSAGE RECORD</span>
+                <span id="sessionProgress">000%</span>
+                <span id="sessionFragments">000 FRAGMENTS</span>
+                <span id="sessionDistance">00000 PX</span>
+            </div>
+
+            <button id="flipbookPrintBtn" type="button">
+                [ 플립북 인쇄하기 ]
+            </button>
+        </section>
+
+    </div>
+
+    <script>
+        /* =============================================================
+           CANCELLATION TERMS — PROMPT B / DEVELOPED v2
+
+           CORE EXPERIENCE
+           -------------------------------------------------------------
+           1. Layer 2 / Terms:
+              MANUAL opens the complete corpus immediately for direct
+              scrolling. AUTO reveals it one Korean character at a time.
+
+           2. Layer 1 / Active fragment:
+              A fragment is generated only when the user advances downward
+              into previously unpassed scroll territory.
+
+           3. Layer 3 / Residue:
+              The previous active fragment sinks behind the terms and remains
+              as a translucent record of what has already been passed.
+
+           4. Fragment vocabulary:
+              Restore the original Prompt-B logic. The separate Google Sheet
+              provides the curated ~120 words. They appear in that stored
+              order, looping from the beginning after the last word, while
+              their positions remain random.
+
+           5. Passage + progress:
+              AUTO follows a one-minute passage clock; MANUAL follows only
+              the visitor's scroll. A restrained bottom-left progress rail is
+              calculated against the complete corpus height in both modes.
+           ============================================================= */
+
+        const CONFIG = {
+            googleSheetCsvUrl: "https://docs.google.com/spreadsheets/d/1OYNs-KxfpT-34SjYCfJ6rR-pI21t8VgVcRwsPsEao9Y/export?format=csv&gid=0",
+            pdfFilePath: "./Cancellation-Terms_Hard-copy_Flip-Book.pdf",
+
+            /*
+               EDITED WEB CORPUS
+               This Prompt B edition intentionally uses the opening
+               5,841 characters of the original collected corpus.
+               At the current speed curve, the typing passage lasts
+               approximately 40.3 seconds in AUTO without SPACE hold.
+            */
+
+            /*
+               TYPING RHYTHM
+               The opening remains at the approved readable speed.
+               Immediately after the sentence below, the text accelerates
+               sharply to 180 chars/sec and then stays constant.
+            */
+            typingSlowCharactersPerSecond: 30,
+            typingFastCharactersPerSecond: 180,
+            typingMaximumCharactersPerSecond: 180,
+
+            /*
+               HOLD TO READ
+               During AUTO's accelerated passage, holding SPACE temporarily
+               returns the stream to the original readable speed. MANUAL
+               keeps native scrolling and does not use this control.
+            */
+            holdToReadCharactersPerSecond: 30,
+            typingMaxCharactersPerFrame: 12,
+            typingAccelerationSentence:
+                "netflix.com 웹사이트로 이동하여 ‘계정’ 페이지를 클릭하면 다음 결제일을 확인할 수 있습니다.",
+
+            /*
+               The viewport follows the newest typed character automatically.
+               Normal scroll events still fire, so the red fragment engine
+               remains driven by downward passage exactly as before.
+            */
+            autoScrollEnabled: true,
+            autoScrollViewportAnchor: 0.75,
+
+            /*
+               AUTO MODE TIMING
+               The terms passage itself is traversed over ~56 seconds.
+               A final 4-second handoff carries the viewport naturally into
+               the Prompt C print transition. With no SPACE hold, the whole
+               AUTO experience is therefore approximately one minute.
+            */
+            autoPassageDurationMs: 56000,
+            autoEndingHandoffMs: 4000,
+            /*
+               Smooth-follow parameters. The lower 25vh is real blank space,
+               so the typing point can remain at 75% of the viewport.
+            */
+            autoScrollFollowStrengthSlow: 0.075,
+            autoScrollFollowStrengthFast: 0.16,
+            autoScrollDeadZone: 1.5,
+
+            drawTraceLines: true,
+            maxFragments: 650,
+            maxFragmentsPerScrollFrame: 24,
+
+            // Scroll distance necessary for one fragment.
+            // The interval becomes shorter deeper in the passage, so the
+            // fragments gradually take more of the user's attention.
+            thresholds: {
+                start: 460,
+                early: 360,
+                middle: 235,
+                late: 150,
+                end: 100
+            },
+
+            // Fragment typography. Raised from the previous 26px start so
+            // that the first fragment is immediately legible as an event.
+            fragmentFont: {
+                desktopStart: 36,
+                desktopEnd: 46,
+                mobileStart: 29,
+                mobileEnd: 37
+            }
+        };
+
+        const FALLBACK_TRACE_WORDS = [
+            "거절", "소멸", "위반", "면책", "제한",
+            "해지", "환불", "책임", "위약금", "자동결제",
+            "자동갱신", "청구", "삭제", "동의", "승인"
+        ];
+
+        const state = {
+            systemReady: false,
+
+            // Layer 2 typing
+            fullText: "",
+            fullCharacters: [],
+            typedIndex: 0,
+            typingNode: null,
+            typingStarted: false,
+            typingComplete: false,
+            typingLastTime: 0,
+            typingCarry: 0,
+            typingRaf: null,
+            lastGeometrySyncTime: 0,
+            typingAccelerationIndex: -1,
+            typingAccelerationStarted: false,
+            currentTypingSpeed: 30,
+            autoScrollActive: true,
+
+            // User agency
+            startRequested: false,
+            selectedMode: "auto",
+            mode: null,
+            spaceHeld: false,
+
+            // AUTO passage clock
+            autoPassageStartedAt: null,
+            autoPassageRaf: null,
+            autoPauseStartedAt: null,
+            autoPausedDuration: 0,
+
+            // Ending transition
+            endingRevealed: false,
+            endingHandoffStarted: false,
+            endingHandoffRaf: null,
+
+            // Final-height measurement
+            fullTextHeight: 1,
+
+            // Layer 1 / 3 fragments
+            traceWords: [...FALLBACK_TRACE_WORDS],
+            wordIndex: 0,
+            furthestScrollY: 0,
+            distanceCarry: 0,
+            fragmentCount: 0,
+            lastResidueCenter: null,
+
+            // Interface / record
+            currentProgress: 0,
+            maxProgress: 0,
+            rafPending: false,
+            startedAt: null
+        };
+
+        const els = {};
+
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            Object.assign(els, {
+                landing: document.getElementById('landingLayer'),
+                guide: document.getElementById('guideText'),
+                modeSelector: document.getElementById('modeSelector'),
+                modeButtons: Array.from(document.querySelectorAll('.mode-option')),
+                modeHints: Array.from(document.querySelectorAll('[data-mode-hint]')),
+
+                dossier: document.querySelector('.dossier-container'),
+                matrix: document.querySelector('.matrix-grid'),
+                textZone: document.getElementById('dossierMatrix'),
+                textBase: document.getElementById('textBase'),
+
+                layer1: document.getElementById('layer1Active'),
+                layer3: document.getElementById('layer3Group'),
+                canvas: document.getElementById('lineCanvas'),
+
+                indicator: document.querySelector('.scroll-indicator'),
+
+                scrollProgress: document.getElementById('scrollProgress'),
+                scrollProgressValue: document.getElementById('scrollProgressValue'),
+
+                printArea: document.getElementById('printTriggerArea'),
+                printBtn: document.getElementById('flipbookPrintBtn'),
+
+                sessionRecord: document.getElementById('sessionRecord'),
+                sessionProgress: document.getElementById('sessionProgress'),
+                sessionFragments: document.getElementById('sessionFragments'),
+                sessionDistance: document.getElementById('sessionDistance')
+            });
+
+            window.scrollTo(0, 0);
+
+            prepareTypingCorpus();
+            createFullTextMeasure();
+            measureFullTextHeight();
+            syncLayerGeometry();
+
+            loadTraceWords();
+            bindEvents();
+            startLandingSequence();
+            updateInterface(0);
+
+            // Adobe/Sandoll font metrics can change the final text height.
+            // Re-measure once web fonts have settled.
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(() => {
+                    measureFullTextHeight();
+                    syncLayerGeometry();
+                    updateInterface(getProgress());
+                });
+            }
+        }
+
+        function bindEvents() {
+            window.addEventListener('scroll', requestScrollFrame, { passive: true });
+
+            window.addEventListener('resize', () => {
+                measureFullTextHeight();
+                syncLayerGeometry();
+                requestScrollFrame();
+            });
+
+            els.printBtn.addEventListener('click', printFlipbook);
+
+            /*
+               SPACE has two meanings in this project:
+               - Before start: enter the experience.
+               - During passage: hold to slow the flow temporarily.
+               Browser page-scroll behavior is disabled for this key.
+            */
+            window.addEventListener('keydown', handleSpaceDown, { passive: false });
+            window.addEventListener('keyup', handleSpaceUp, { passive: false });
+            window.addEventListener('blur', releaseSpaceHold);
+
+            els.modeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (state.systemReady || state.startRequested) return;
+                    selectMode(button.dataset.mode);
+                });
+            });
+        }
+
+        /* -------------------------------------------------------------
+           01. LANDING
+           ------------------------------------------------------------- */
+        function startLandingSequence() {
+            /*
+               The landing never advances on a timer.
+               The visitor must consciously press SPACE after reading it.
+            */
+            requestAnimationFrame(() => {
+                els.guide.classList.add('is-visible');
+            });
+        }
+
+        function selectMode(mode) {
+            if (!["manual", "auto"].includes(mode)) return;
+
+            state.selectedMode = mode;
+
+            els.modeButtons.forEach(button => {
+                const selected = button.dataset.mode === mode;
+                button.classList.toggle('is-selected', selected);
+                button.setAttribute('aria-pressed', String(selected));
+            });
+
+            els.modeHints.forEach(hint => {
+                hint.hidden = hint.dataset.modeHint !== mode;
+            });
+        }
+
+        function handleSpaceDown(event) {
+            /*
+               Landing:
+               ← / → changes the selected mode.
+               SPACE confirms and starts it.
+
+               Experience:
+               Holding SPACE creates a temporary readable state.
+            */
+            if (!state.systemReady && !state.startRequested) {
+                if (event.code === 'ArrowLeft') {
+                    event.preventDefault();
+                    selectMode('manual');
+                    return;
+                }
+
+                if (event.code === 'ArrowRight') {
+                    event.preventDefault();
+                    selectMode('auto');
+                    return;
+                }
+            }
+
+            if (event.code !== 'Space') return;
+
+            if (!state.systemReady && !state.startRequested) {
+                event.preventDefault();
+                beginExperience(state.selectedMode);
+                return;
+            }
+
+            if (!state.systemReady) {
+                event.preventDefault();
+                return;
+            }
+
+            /*
+               MANUAL restores the complete document and leaves normal
+               browser scrolling—including the SPACE key—untouched.
+               Hold to Read belongs only to the timed AUTO passage.
+            */
+            if (state.mode !== 'auto') return;
+
+            event.preventDefault();
+
+            if (event.repeat) {
+                state.spaceHeld = true;
+                document.documentElement.classList.add('is-holding-space');
+                return;
+            }
+
+            state.spaceHeld = true;
+            document.documentElement.classList.add('is-holding-space');
+
+            if (
+                state.mode === 'auto' &&
+                state.autoPassageStartedAt !== null &&
+                state.autoPauseStartedAt === null
+            ) {
+                state.autoPauseStartedAt = performance.now();
+            }
+        }
+
+        function handleSpaceUp(event) {
+            if (event.code !== 'Space') return;
+            if (!state.systemReady || state.mode !== 'auto') return;
+
+            event.preventDefault();
+            releaseSpaceHold();
+        }
+
+        function releaseSpaceHold() {
+            if (
+                state.mode === 'auto' &&
+                state.autoPauseStartedAt !== null
+            ) {
+                state.autoPausedDuration +=
+                    performance.now() - state.autoPauseStartedAt;
+
+                state.autoPauseStartedAt = null;
+            }
+
+            state.spaceHeld = false;
+            document.documentElement.classList.remove('is-holding-space');
+        }
+
+        function beginExperience(mode) {
+            if (state.startRequested) return;
+
+            state.startRequested = true;
+            state.mode = mode === 'manual' ? 'manual' : 'auto';
+            state.autoScrollActive = state.mode === 'auto';
+
+            document.documentElement.dataset.mode = state.mode;
+
+            els.landing.classList.add('is-starting');
+            els.guide.classList.remove('is-visible');
+
+            /*
+               A short transition separates the conscious start action from
+               the moving terms. Nothing begins before the key press.
+            */
+            setTimeout(() => {
+                els.landing.classList.add('is-hidden');
+            }, 120);
+
+            setTimeout(() => {
+                els.landing.hidden = true;
+
+                state.systemReady = true;
+                state.startedAt = new Date().toISOString();
+                state.furthestScrollY = window.scrollY;
+                state.distanceCarry = 0;
+
+                els.scrollProgress.classList.add('is-visible');
+
+                if (state.mode === 'manual') {
+                    revealFullCorpus();
+                } else {
+                    startTyping();
+                    startAutoPassage();
+                }
+            }, 720);
+        }
+
+        /* -------------------------------------------------------------
+           02. LAYER 2 — CHARACTER-BY-CHARACTER TERMS REVEAL
+           ------------------------------------------------------------- */
+        function prepareTypingCorpus() {
+            // Keep every piece of source content, while removing only HTML
+            // indentation/newline whitespace that was not semantically part
+            // of the terms.
+            state.fullText = els.textBase.textContent
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            // Array.from keeps Korean syllable blocks as Unicode characters
+            // instead of decomposing them into jamo.
+            state.fullCharacters = Array.from(state.fullText);
+
+            const accelerationSentence = CONFIG.typingAccelerationSentence;
+            const accelerationTextIndex =
+                state.fullText.indexOf(accelerationSentence);
+
+            if (accelerationTextIndex >= 0) {
+                /*
+                   Accelerate from the FIRST character of the requested
+                   sentence rather than after the sentence is complete.
+                */
+                const beforeSentence = state.fullText.slice(
+                    0,
+                    accelerationTextIndex
+                );
+                state.typingAccelerationIndex =
+                    Array.from(beforeSentence).length;
+            } else {
+                state.typingAccelerationIndex = Math.max(
+                    1,
+                    Math.round(state.fullCharacters.length * 0.01)
+                );
+                console.warn(
+                    '[Cancellation Terms] acceleration sentence not found; using 1% fallback.'
+                );
+            }
+
+            state.currentTypingSpeed =
+                CONFIG.typingSlowCharactersPerSecond;
+
+            // Clear the visible corpus only AFTER it has been saved above.
+            els.textBase.textContent = '';
+
+            state.typingNode = document.createTextNode('');
+            els.textBase.appendChild(state.typingNode);
+
+            const caret = document.createElement('span');
+            caret.className = 'typing-caret';
+            caret.id = 'typingCaret';
+            caret.setAttribute('aria-hidden', 'true');
+            els.textBase.appendChild(caret);
+            els.typingCaret = caret;
+        }
+
+        function startTyping() {
+            if (state.typingStarted || state.typingComplete) return;
+
+            state.typingStarted = true;
+            state.typingLastTime = performance.now();
+            state.typingRaf = requestAnimationFrame(typeFrame);
+        }
+
+        function revealFullCorpus() {
+            /*
+               MANUAL is a fully open document, not a slower version of AUTO.
+               The visitor receives the entire corpus at once and creates
+               fragments only through their own forward scrolling.
+            */
+            if (state.typingRaf !== null) {
+                cancelAnimationFrame(state.typingRaf);
+                state.typingRaf = null;
+            }
+
+            state.typingStarted = false;
+            state.typingComplete = true;
+            state.typedIndex = state.fullCharacters.length;
+            state.typingCarry = 0;
+
+            state.typingNode.data = state.fullText;
+
+            if (els.typingCaret) {
+                els.typingCaret.classList.add('is-finished');
+            }
+
+            measureFullTextHeight();
+            syncLayerGeometry();
+
+            const progress = getProgress();
+            state.currentProgress = progress;
+            state.maxProgress = Math.max(state.maxProgress, progress);
+
+            updateInterface(progress);
+            saveSessionRecord(true);
+        }
+
+        function typeFrame(now) {
+            if (!state.typingStarted || state.typingComplete) return;
+
+            const elapsed = Math.min(
+                100,
+                Math.max(0, now - state.typingLastTime)
+            );
+            state.typingLastTime = now;
+
+            state.currentTypingSpeed = getCurrentTypingSpeed();
+            state.typingCarry +=
+                (elapsed / 1000) * state.currentTypingSpeed;
+
+            const available = Math.floor(state.typingCarry);
+            const count = Math.min(
+                available,
+                CONFIG.typingMaxCharactersPerFrame,
+                state.fullCharacters.length - state.typedIndex
+            );
+
+            if (count > 0) {
+                const nextChunk = state.fullCharacters
+                    .slice(state.typedIndex, state.typedIndex + count)
+                    .join('');
+
+                state.typingNode.appendData(nextChunk);
+                state.typedIndex += count;
+                state.typingCarry -= count;
+
+                if (
+                    !state.typingAccelerationStarted &&
+                    state.typedIndex >= state.typingAccelerationIndex
+                ) {
+                    state.typingAccelerationStarted = true;
+                    document.documentElement.classList.add('is-accelerated');
+                }
+
+                if (now - state.lastGeometrySyncTime > 120) {
+                    syncLayerGeometry();
+                    state.lastGeometrySyncTime = now;
+                    updateInterface(getProgress());
+                }
+            }
+
+            // Keep following the live typing edge even between line wraps.
+            autoFollowTypingPoint();
+
+            if (state.typedIndex >= state.fullCharacters.length) {
+                completeTyping();
+                return;
+            }
+
+            state.typingRaf = requestAnimationFrame(typeFrame);
+        }
+
+        function getCurrentTypingSpeed() {
+            /*
+               SPACE never pauses the piece completely.
+               It temporarily restores the opening reading speed.
+            */
+            if (state.spaceHeld && state.systemReady) {
+                return CONFIG.holdToReadCharactersPerSecond;
+            }
+
+            if (state.typedIndex < state.typingAccelerationIndex) {
+                return CONFIG.typingSlowCharactersPerSecond;
+            }
+
+            // Once accelerated, the text remains at 180 chars/sec.
+            return CONFIG.typingFastCharactersPerSecond;
+        }
+
+        /* -------------------------------------------------------------
+           AUTO MODE — ONE-MINUTE PASSAGE
+           ------------------------------------------------------------- */
+        function startAutoPassage() {
+            if (state.mode !== 'auto') return;
+            if (state.autoPassageRaf !== null) return;
+
+            state.autoPassageStartedAt = performance.now();
+            state.autoPausedDuration = 0;
+
+            state.autoPassageRaf =
+                requestAnimationFrame(autoPassageFrame);
+        }
+
+        function getAutoActiveElapsed(now) {
+            if (state.autoPassageStartedAt === null) return 0;
+
+            const currentPause =
+                state.autoPauseStartedAt === null
+                    ? 0
+                    : now - state.autoPauseStartedAt;
+
+            return Math.max(
+                0,
+                now -
+                    state.autoPassageStartedAt -
+                    state.autoPausedDuration -
+                    currentPause
+            );
+        }
+
+        function getFinalTextScrollY() {
+            const zoneRect =
+                els.textZone.getBoundingClientRect();
+
+            const textTopDocument =
+                zoneRect.top + window.scrollY;
+
+            return Math.max(
+                0,
+                textTopDocument +
+                    state.fullTextHeight -
+                    window.innerHeight
+            );
+        }
+
+        function autoPassageFrame(now) {
+            if (state.mode !== 'auto') {
+                state.autoPassageRaf = null;
+                return;
+            }
+
+            if (state.endingHandoffStarted) {
+                state.autoPassageRaf = null;
+                return;
+            }
+
+            const elapsed =
+                getAutoActiveElapsed(now);
+
+            const timeProgress =
+                clamp(
+                    elapsed /
+                        CONFIG.autoPassageDurationMs,
+                    0,
+                    1
+                );
+
+            const finalTextY =
+                getFinalTextScrollY();
+
+            /*
+               Ease the time curve very slightly so the opening does not feel
+               mechanically abrupt. The total duration remains fixed.
+            */
+            const easedProgress =
+                timeProgress < 0.5
+                    ? 2 * timeProgress * timeProgress
+                    : 1 -
+                        Math.pow(-2 * timeProgress + 2, 2) / 2;
+
+            const timeTargetY =
+                finalTextY * easedProgress;
+
+            /*
+               The generated document may not yet be tall enough to reach the
+               time target during the slow opening. Cap against the current
+               real scroll range; once typing accelerates, the text gets ahead
+               and the viewport can continue at its controlled one-minute pace.
+            */
+            const currentScrollableY =
+                Math.max(
+                    0,
+                    document.documentElement.scrollHeight -
+                        window.innerHeight
+                );
+
+            const targetY =
+                Math.min(
+                    timeTargetY,
+                    currentScrollableY
+                );
+
+            const currentY =
+                window.scrollY ||
+                document.documentElement.scrollTop ||
+                0;
+
+            const delta =
+                targetY - currentY;
+
+            /*
+               Continuous interpolation eliminates the old tapping/jumping
+               correction. The scroll rate is governed by the 56-second clock,
+               not by the increasing typing speed.
+            */
+            if (Math.abs(delta) > 0.25) {
+                const nextY =
+                    currentY + delta * 0.14;
+
+                window.scrollTo(
+                    0,
+                    Math.max(0, nextY)
+                );
+            }
+
+            const currentPassageProgress =
+                getProgress();
+
+            maybeRevealEnding(
+                currentPassageProgress
+            );
+
+            if (!state.endingRevealed) {
+                state.autoPassageRaf =
+                    requestAnimationFrame(autoPassageFrame);
+            } else {
+                state.autoPassageRaf = null;
+            }
+        }
+
+        /*
+           The older caret-following function is retained as a no-op interface
+           for the typing loop. AUTO is now governed by a stable passage clock;
+           MANUAL never moves the viewport automatically.
+        */
+        function autoFollowTypingPoint() {
+            return;
+        }
+
+        function completeTyping() {
+            state.typingComplete = true;
+            state.typingStarted = false;
+
+            if (els.typingCaret) {
+                els.typingCaret.classList.add('is-finished');
+            }
+
+            syncLayerGeometry();
+
+            /*
+               Do NOT jump to the print area and do NOT force progress to 100%.
+               The ending is revealed only when the visitor actually reaches
+               the end of the text passage.
+            */
+            const progress =
+                getProgress();
+
+            state.currentProgress = progress;
+            state.maxProgress =
+                Math.max(
+                    state.maxProgress,
+                    progress
+                );
+
+            updateInterface(progress);
+            saveSessionRecord(true);
+            maybeRevealEnding(progress);
+        }
+
+        /* -------------------------------------------------------------
+           03. FINAL HEIGHT MEASUREMENT
+           The visible terms are still being typed, so current page height
+           cannot serve as a useful "whole website = 100%" reference.
+           An invisible, out-of-flow copy provides the final height.
+           ------------------------------------------------------------- */
+        function createFullTextMeasure() {
+            const measure = document.createElement('div');
+            measure.className = 'full-text-measure';
+            measure.id = 'fullTextMeasure';
+            measure.textContent = state.fullText;
+            measure.setAttribute('aria-hidden', 'true');
+
+            /*
+               IMPORTANT:
+               The measuring copy lives directly under <body> and is fixed far
+               outside the viewport. This prevents the invisible full corpus
+               from accidentally contributing to document/matrix scrollHeight.
+            */
+            document.body.appendChild(measure);
+            els.fullTextMeasure = measure;
+        }
+
+        function measureFullTextHeight() {
+            if (!els.fullTextMeasure) return;
+
+            const zoneStyle = getComputedStyle(els.textZone);
+            const zoneWidth = els.textZone.getBoundingClientRect().width;
+
+            /*
+               Copy the exact metrics that determine wrapping. The measure is
+               outside the layout, so these values have to be transferred
+               explicitly instead of inherited.
+            */
+            Object.assign(els.fullTextMeasure.style, {
+                width: `${Math.max(1, zoneWidth)}px`,
+                fontFamily: zoneStyle.fontFamily,
+                fontSize: zoneStyle.fontSize,
+                fontWeight: zoneStyle.fontWeight,
+                fontStyle: zoneStyle.fontStyle,
+                lineHeight: zoneStyle.lineHeight,
+                letterSpacing: zoneStyle.letterSpacing,
+                wordBreak: zoneStyle.wordBreak,
+                whiteSpace: zoneStyle.whiteSpace,
+                textAlign: zoneStyle.textAlign
+            });
+
+            state.fullTextHeight = Math.max(
+                window.innerHeight,
+                Math.ceil(
+                    els.fullTextMeasure.scrollHeight +
+                    window.innerHeight * 0.25
+                )
+            );
+        }
+
+        /* -------------------------------------------------------------
+           04. ORIGINAL ~120-WORD LIST
+           Restore the original Prompt-B data behavior:
+           Sheet order is preserved; positions are random.
+           ------------------------------------------------------------- */
+        async function loadTraceWords() {
+            try {
+                const response = await fetch(CONFIG.googleSheetCsvUrl, {
+                    cache: 'no-store'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const csvText = await response.text();
+
+                const loadedWords = csvText
+                    .split(/[\t,\r\n]+/)
+                    .map(word => word.trim())
+                    .filter(Boolean);
+
+                if (loadedWords.length > 0) {
+                    state.traceWords = loadedWords;
+                    state.wordIndex = 0;
+                }
+
+                console.info(
+                    '[Cancellation Terms] trace words loaded:',
+                    state.traceWords.length
+                );
+            } catch (error) {
+                console.warn(
+                    '[Cancellation Terms] word sheet unavailable; fallback sequence is active.',
+                    error
+                );
+            }
+        }
+
+        function getNextTraceWord() {
+            if (!state.traceWords.length) return '';
+
+            const word = state.traceWords[state.wordIndex];
+            state.wordIndex = (state.wordIndex + 1) % state.traceWords.length;
+            return word;
+        }
+
+        /* -------------------------------------------------------------
+           05. SCROLL — ONLY FORWARD PASSAGE CREATES FRAGMENTS
+           ------------------------------------------------------------- */
+        function requestScrollFrame() {
+            if (state.rafPending) return;
+
+            state.rafPending = true;
+
+            requestAnimationFrame(() => {
+                state.rafPending = false;
+                handleScroll();
+            });
+        }
+
+        function handleScroll() {
+            const currentY = window.scrollY
+                || document.documentElement.scrollTop
+                || 0;
+
+            const currentProgress = getProgress(currentY);
+
+            state.currentProgress = currentProgress;
+            state.maxProgress = Math.max(state.maxProgress, currentProgress);
+
+            updateInterface(currentProgress);
+
+            if (!state.systemReady) return;
+
+            maybeRevealEnding(currentProgress);
+
+            if (state.endingRevealed) return;
+            if (state.fragmentCount >= CONFIG.maxFragments) return;
+
+            // Scrolling upward is for review only. A fragment appears only
+            // when the user enters new downward territory.
+            if (currentY <= state.furthestScrollY) return;
+
+            const forwardDistance = currentY - state.furthestScrollY;
+
+            state.furthestScrollY = currentY;
+            state.distanceCarry += forwardDistance;
+
+            let generatedThisFrame = 0;
+            let threshold = getGenerationThreshold(currentProgress);
+
+            while (
+                state.distanceCarry >= threshold &&
+                generatedThisFrame < CONFIG.maxFragmentsPerScrollFrame &&
+                state.fragmentCount < CONFIG.maxFragments
+            ) {
+                generateWordBlock(currentProgress);
+
+                state.distanceCarry -= threshold;
+                generatedThisFrame += 1;
+
+                threshold = getGenerationThreshold(currentProgress);
+            }
+
+            // Avoid hundreds of new DOM nodes after an artificial scrollbar jump.
+            if (generatedThisFrame >= CONFIG.maxFragmentsPerScrollFrame) {
+                state.distanceCarry = 0;
+            }
+        }
+
+        function getProgress(scrollY = window.scrollY) {
+            const zoneRect = els.textZone.getBoundingClientRect();
+            const textTopDoc = zoneRect.top + window.scrollY;
+
+            const finalEndScrollY =
+                textTopDoc + state.fullTextHeight - window.innerHeight;
+
+            const denominator = Math.max(
+                1,
+                finalEndScrollY - textTopDoc
+            );
+
+            return clamp(
+                (scrollY - textTopDoc) / denominator,
+                0,
+                1
+            );
+        }
+
+        function getGenerationThreshold(progress) {
+            const p = clamp(progress, 0, 1);
+            const t = CONFIG.thresholds;
+
+            if (p < 0.18) {
+                return lerp(t.start, t.early, p / 0.18);
+            }
+
+            if (p < 0.52) {
+                return lerp(t.early, t.middle, (p - 0.18) / 0.34);
+            }
+
+            if (p < 0.80) {
+                return lerp(t.middle, t.late, (p - 0.52) / 0.28);
+            }
+
+            return lerp(t.late, t.end, (p - 0.80) / 0.20);
+        }
+
+        /* -------------------------------------------------------------
+           06. THREE-LAYER FRAGMENT ENGINE
+           ------------------------------------------------------------- */
+        function generateWordBlock(progress) {
+            const word = getNextTraceWord();
+            if (!word) return;
+
+            sedimentCurrentFragment();
+
+            const newBlock = document.createElement('div');
+            newBlock.className = 'word-block is-active';
+            newBlock.textContent = word;
+            newBlock.setAttribute('aria-hidden', 'true');
+
+            const desktop = window.innerWidth >= 1024;
+            const minSize = desktop
+                ? CONFIG.fragmentFont.desktopStart
+                : CONFIG.fragmentFont.mobileStart;
+
+            const maxSize = desktop
+                ? CONFIG.fragmentFont.desktopEnd
+                : CONFIG.fragmentFont.mobileEnd;
+
+            const fontSize = lerp(
+                minSize,
+                maxSize,
+                Math.pow(clamp(progress, 0, 1), 1.25)
+            );
+
+            newBlock.style.fontSize = `${fontSize.toFixed(2)}px`;
+
+            els.layer1.appendChild(newBlock);
+
+            const position = getRandomFragmentPosition(newBlock);
+            newBlock.style.left = `${position.x}px`;
+            newBlock.style.top = `${position.y}px`;
+
+            const currentCenter = getElementLocalCenter(newBlock);
+
+            drawTraceLine(
+                state.lastResidueCenter,
+                currentCenter,
+                progress
+            );
+
+            state.fragmentCount += 1;
+            saveSessionRecord();
+        }
+
+        function sedimentCurrentFragment() {
+            const oldBlock = els.layer1.querySelector('.word-block');
+
+            if (!oldBlock) return;
+
+            state.lastResidueCenter = getElementLocalCenter(oldBlock);
+
+            oldBlock.classList.remove('is-active');
+            oldBlock.classList.add('is-residue');
+
+            els.layer3.appendChild(oldBlock);
+        }
+
+        function getRandomFragmentPosition(block) {
+            const matrixRect = els.matrix.getBoundingClientRect();
+            const matrixDocTop = matrixRect.top + window.scrollY;
+
+            const matrixWidth = Math.max(1, els.matrix.clientWidth);
+            const matrixHeight = Math.max(
+                window.innerHeight,
+                els.matrix.scrollHeight
+            );
+
+            const blockWidth = block.offsetWidth;
+            const blockHeight = block.offsetHeight;
+
+            // X is deliberately unrelated to the text source:
+            // the original ~120-word sequence is distributed at random
+            // across the entire visual field.
+            /*
+               Horizontal field:
+               Use the entire current viewport/matrix width.
+               No artificial side bias is introduced.
+            */
+            const xMin = 0;
+            const xMax = Math.max(
+                xMin,
+                matrixWidth - blockWidth
+            );
+
+            const viewportTopLocal =
+                window.scrollY - matrixDocTop;
+
+            /*
+               Vertical field:
+               Screen top = 0, bottom = 1.
+               Fragments are restricted to the central half only:
+               0.25 → 0.75.
+
+               The bottom boundary subtracts the block height so the entire
+               fragment stays inside the intended central viewing band.
+            */
+            const yMin = Math.max(
+                0,
+                viewportTopLocal + window.innerHeight * 0.25
+            );
+
+            const yMaxByViewport =
+                viewportTopLocal +
+                window.innerHeight * 0.75 -
+                blockHeight;
+
+            const yMaxByMatrix =
+                matrixHeight - blockHeight;
+
+            const yMax = Math.max(
+                yMin,
+                Math.min(
+                    yMaxByViewport,
+                    yMaxByMatrix
+                )
+            );
+
+            return {
+                x: randomBetween(xMin, xMax),
+                y: randomBetween(yMin, yMax)
+            };
+        }
+
+        function getElementLocalCenter(element) {
+            const left = parseFloat(element.style.left) || 0;
+            const top = parseFloat(element.style.top) || 0;
+
+            return {
+                x: left + element.offsetWidth / 2,
+                y: top + element.offsetHeight / 2
+            };
+        }
+
+        function drawTraceLine(previous, current, progress) {
+            if (!CONFIG.drawTraceLines || !previous || !current) return;
+
+            const line = document.createElementNS(
+                'http://www.w3.org/2000/svg',
+                'line'
+            );
+
+            line.classList.add('trace-line');
+
+            line.setAttribute('x1', previous.x.toFixed(1));
+            line.setAttribute('y1', previous.y.toFixed(1));
+            line.setAttribute('x2', current.x.toFixed(1));
+            line.setAttribute('y2', current.y.toFixed(1));
+
+            line.style.opacity = String(
+                lerp(0.45, 0.9, progress)
+            );
+
+            els.canvas.appendChild(line);
+        }
+
+        function syncLayerGeometry() {
+            const width = Math.max(
+                1,
+                els.matrix.clientWidth
+            );
+
+            const height = Math.max(
+                window.innerHeight,
+                els.matrix.scrollHeight
+            );
+
+            els.layer1.style.height = `${height}px`;
+            els.layer3.style.height = `${height}px`;
+
+            els.canvas.setAttribute('width', String(width));
+            els.canvas.setAttribute('height', String(height));
+
+            els.canvas.style.width = `${width}px`;
+            els.canvas.style.height = `${height}px`;
+        }
+
+        /* -------------------------------------------------------------
+           07. FIXED PASSAGE PROGRESS + EXISTING PASSAGE RECORD
+           ------------------------------------------------------------- */
+        function updateInterface(currentProgress) {
+            const current = clamp(currentProgress, 0, 1);
+            const currentPercent = Math.round(current * 100);
+
+            // Existing large arrow gently disappears near the destination.
+            if (els.indicator) {
+                const opacity = current >= 0.98
+                    ? 0
+                    : 0.48 * (1 - current * 0.82);
+
+                els.indicator.style.opacity =
+                    String(Math.max(0, opacity));
+            }
+
+            // New bottom-left fixed progress indicator.
+            const visualPercent =
+                currentPercent >= 100
+                    ? "100"
+                    : String(currentPercent).padStart(2, "0");
+
+            els.scrollProgressValue.textContent =
+                visualPercent;
+
+            els.scrollProgress.setAttribute(
+                'aria-valuenow',
+                String(currentPercent)
+            );
+
+            els.scrollProgress.style.setProperty(
+                '--passage-progress',
+                `${(current * 100).toFixed(2)}%`
+            );
+
+            // Keep the existing Passage Record behavior.
+            const recordPercent = Math.round(
+                state.maxProgress * 100
+            );
+
+            const distance = Math.max(
+                0,
+                Math.round(state.furthestScrollY)
+            );
+
+            els.sessionProgress.textContent =
+                `${String(recordPercent).padStart(3, '0')}%`;
+
+            els.sessionFragments.textContent =
+                `${String(state.fragmentCount).padStart(3, '0')} FRAGMENTS`;
+
+            els.sessionDistance.textContent =
+                `${String(distance).padStart(5, '0')} PX`;
+
+            if (
+                state.maxProgress >= 0.92 &&
+                state.typingComplete
+            ) {
+                els.sessionRecord.classList.add('is-visible');
+            }
+        }
+
+        function saveSessionRecord(force = false) {
+            const record = {
+                version: 'prompt-b-developed-v3-2026-08',
+                startedAt: state.startedAt,
+                recordedAt: new Date().toISOString(),
+                progress: Number(state.maxProgress.toFixed(4)),
+                furthestScrollY: Math.round(state.furthestScrollY),
+                fragmentCount: state.fragmentCount,
+                mode: state.mode
+            };
+
+            if (
+                force ||
+                state.fragmentCount % 5 === 0
+            ) {
+                try {
+                    localStorage.setItem(
+                        'cancellationTermsSession',
+                        JSON.stringify(record)
+                    );
+                } catch (error) {
+                    console.warn(
+                        '[Cancellation Terms] session record could not be stored.',
+                        error
+                    );
+                }
+            }
+
+            updateInterface(state.currentProgress);
+            return record;
+        }
+
+        /* -------------------------------------------------------------
+           08. NATURAL B → C ENDING
+           ------------------------------------------------------------- */
+        function maybeRevealEnding(progress = getProgress()) {
+            if (state.endingRevealed) return;
+            if (!state.typingComplete) return;
+            if (progress < 0.995) return;
+
+            state.endingRevealed = true;
+            state.currentProgress = 1;
+            state.maxProgress = 1;
+
+            els.printArea.classList.remove('is-locked');
+            els.printArea.classList.add('is-revealed');
+
+            updateInterface(1);
+            saveSessionRecord(true);
+
+            /*
+               AUTO gets a slow final handoff into the existing print section.
+               MANUAL simply leaves the next section below the finished terms,
+               allowing the visitor to continue with their own scroll.
+            */
+            if (state.mode === 'auto') {
+                startEndingHandoff();
+            }
+        }
+
+        function startEndingHandoff() {
+            if (state.endingHandoffStarted) return;
+
+            state.endingHandoffStarted = true;
+
+            if (state.autoPassageRaf !== null) {
+                cancelAnimationFrame(
+                    state.autoPassageRaf
+                );
+                state.autoPassageRaf = null;
+            }
+
+            const startedAt =
+                performance.now();
+
+            const startY =
+                window.scrollY ||
+                document.documentElement.scrollTop ||
+                0;
+
+            function handoffFrame(now) {
+                const t =
+                    clamp(
+                        (now - startedAt) /
+                            CONFIG.autoEndingHandoffMs,
+                        0,
+                        1
+                    );
+
+                const eased =
+                    t < 0.5
+                        ? 4 * t * t * t
+                        : 1 -
+                            Math.pow(-2 * t + 2, 3) / 2;
+
+                /*
+                   Recalculate the target from the actual print area each frame.
+                   This keeps the handoff stable across viewport sizes.
+                */
+                const areaRect =
+                    els.printArea.getBoundingClientRect();
+
+                const areaTopDocument =
+                    areaRect.top + window.scrollY;
+
+                const areaCenterDocument =
+                    areaTopDocument +
+                    els.printArea.offsetHeight / 2;
+
+                const targetY =
+                    Math.max(
+                        0,
+                        areaCenterDocument -
+                            window.innerHeight / 2
+                    );
+
+                window.scrollTo(
+                    0,
+                    lerp(
+                        startY,
+                        targetY,
+                        eased
+                    )
+                );
+
+                if (t < 1) {
+                    state.endingHandoffRaf =
+                        requestAnimationFrame(
+                            handoffFrame
+                        );
+                } else {
+                    state.endingHandoffRaf = null;
+                }
+            }
+
+            state.endingHandoffRaf =
+                requestAnimationFrame(
+                    handoffFrame
+                );
+        }
+
+        /* -------------------------------------------------------------
+           08. B → C PRINT
+           The PDF itself is NOT altered. The existing flipbook interior,
+           title pages, archive, and back cover print exactly as supplied.
+           ------------------------------------------------------------- */
+        function printFlipbook() {
+            saveSessionRecord(true);
+
+            const existingFrame =
+                document.getElementById('hiddenPdfPrintFrame');
+
+            if (existingFrame) {
+                existingFrame.remove();
+            }
+
+            const iframe = document.createElement('iframe');
+
+            iframe.id = 'hiddenPdfPrintFrame';
+            iframe.src = CONFIG.pdfFilePath;
+            iframe.className = 'hidden-pdf-frame';
+            iframe.setAttribute(
+                'title',
+                'Cancellation Terms Flipbook Print Source'
+            );
+
+            iframe.onload = function() {
+                try {
+                    iframe.contentWindow.focus();
+                    iframe.contentWindow.print();
+                } catch (error) {
+                    console.error(
+                        '[Cancellation Terms] PDF print failed.',
+                        error
+                    );
+
+                    window.open(
+                        CONFIG.pdfFilePath,
+                        '_blank',
+                        'noopener'
+                    );
+                }
+            };
+
+            document.body.appendChild(iframe);
+        }
+
+        /* -------------------------------------------------------------
+           09. UTILITIES
+           ------------------------------------------------------------- */
+        function clamp(value, min, max) {
+            return Math.min(
+                max,
+                Math.max(min, value)
+            );
+        }
+
+        function lerp(a, b, t) {
+            return a + (b - a) * clamp(t, 0, 1);
+        }
+
+        function randomBetween(min, max) {
+            if (max <= min) return min;
+            return min + Math.random() * (max - min);
+        }
+    </script>
+</body>
+</html>
