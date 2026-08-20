@@ -490,9 +490,9 @@ word block region:
 전체 약 9만 자 corpus를 웹에서 전부 재생하면 시간이 지나치게 길어져, Prompt B 웹 버전은 **편집된 corpus**를 사용한다.
 
 현재 편집된 텍스트:
-- 11,703 characters
+- 11,634 characters
 - 이전 5,841자 편집본의 약 두 배
-- 전체 전문의 앞부분에서 문장이 자연스럽게 끝나는 지점까지 사용
+- 전체 전문의 앞부분에서 `[제4조]`가 완결되는 구조적 경계까지 사용
 
 ---
 
@@ -601,7 +601,7 @@ SPACE released → normal current speed
 
 AUTO timing:
 - 고정 56초 passage clock을 사용하지 않음
-- 11,703자 corpus의 실제 생성 끝점을 viewport 75%에서 추적
+- 11,634자 corpus의 실제 생성 끝점을 viewport 75%에서 추적
 - SPACE를 누르면 생성과 스크롤이 함께 느려짐
 - 완료 후 Print handoff는 약 4초
 
@@ -614,10 +614,11 @@ AUTO timing:
 
 현재 최신 랜딩은 단순 “스크롤하세요”가 아니다.
 
-서사:
+제목 / 안내:
 
 ```text
-문장을 통과하는 방식을 선택하세요.
+Cancellation Terms
+두 가지 진행 방식 중 하나를 선택해 시작하세요.
 ```
 
 Mode:
@@ -723,6 +724,12 @@ CSS 기본 방향:
 - Print 영역 unlock
 - 이후 약 4초 동안 부드러운 handoff
 - Print area center에 자연스럽게 이동
+
+## Fragment sentence completion
+
+- 120개 단어는 총 10개의 문장으로 구성됨
+- passage 끝에서 단어 시퀀스가 문장 중간에 멈추면 다음 종결어까지 생성
+- 마지막 문장이 완결된 뒤에만 Print 영역을 unlock
 
 중요:
 - 갑작스러운 jump 금지
@@ -836,6 +843,10 @@ Website
 → Cancellation-Terms_Hard-copy_Flip-Book.pdf
 → browser print()
 ```
+
+Print 영역에는 두 개의 행동이 존재한다.
+- `[ 플립북 인쇄하기 ]`
+- `[ 처음으로 돌아가기 ]` — 페이지 상태를 초기화하고 랜딩으로 복귀
 
 ---
 
@@ -1077,14 +1088,16 @@ v9의 핵심:
 - MANUAL = direct scroll
 - SPACE = hold to read at 60 chars/sec without stopping
 - typing 30 → 150 fixed
-- 11,703-character edited corpus
+- 11,634-character edited corpus
 - typing point 75%
 - bottom 25vh breathing space
 - fragment region 25%–75%
 - 120 ordered words, random positions
+- fragment sequence completes its current sentence before Print unlock
 - Apotek progress
 - natural ending / no scrollIntoView jump
 - fixed Prompt C PDF print
+- restart button returns to the landing
 
 ---
 

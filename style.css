@@ -106,17 +106,28 @@ button {
 
 .landing-narrative {
     display: grid;
-    gap: 0.18em;
+    gap: 10px;
 
     font-family:
         "sandoll-myeongjoneo1",
         Georgia,
         "Times New Roman",
         serif;
+}
+
+.landing-title {
     font-size: clamp(23px, 2vw, 34px);
     font-weight: 700;
-    line-height: 1.38;
+    line-height: 1.1;
     letter-spacing: -0.035em;
+}
+
+.landing-subtitle {
+    font-size: clamp(14px, 1.1vw, 17px);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -0.025em;
+    opacity: 0.58;
 }
 
 .landing-narrative p {
@@ -746,12 +757,17 @@ html.is-accelerated .scroll-progress {
     color: var(--color-point);
 }
 
-#flipbookPrintBtn {
+.ending-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ending-button {
     padding: 0.82em 1.05em 0.78em;
 
-    border: 3px solid var(--color-point);
     background: var(--color-bg);
-    color: var(--color-point);
 
     font-family:
         'JetBrains Mono',
@@ -771,9 +787,27 @@ html.is-accelerated .scroll-progress {
         color 0.18s ease;
 }
 
-#flipbookPrintBtn:hover,
-#flipbookPrintBtn:focus-visible {
+.ending-button--primary {
+    border: 3px solid var(--color-point);
+    color: var(--color-point);
+}
+
+.ending-button--secondary {
+    border: 1px solid rgba(17, 17, 17, 0.58);
+    color: var(--color-text);
+}
+
+.ending-button--primary:hover,
+.ending-button--primary:focus-visible {
     background: var(--color-point);
+    color: var(--color-bg);
+    outline: none;
+}
+
+.ending-button--secondary:hover,
+.ending-button--secondary:focus-visible {
+    border-color: var(--color-text);
+    background: var(--color-text);
     color: var(--color-bg);
     outline: none;
 }
@@ -811,7 +845,7 @@ html.is-accelerated .scroll-progress {
     .scroll-progress,
     .scroll-progress__fill,
     .session-record,
-    #flipbookPrintBtn {
+    .ending-button {
         transition: none;
     }
 
