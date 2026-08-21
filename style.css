@@ -361,6 +361,17 @@ html[data-input-profile="touch"] .touch-only:not([hidden]) {
 }
 
 /*
+   AUTO touch-hold is an interaction, not a text-selection gesture.
+   Keep MANUAL untouched so native scrolling and selection remain available.
+*/
+html[data-input-profile="touch"][data-mode="auto"] .text-stream-zone,
+html[data-input-profile="touch"][data-mode="auto"] .layer-2-text-base {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/*
    Invisible full corpus:
    - identical inherited typography and width
    - absolutely positioned, therefore it never creates scroll height

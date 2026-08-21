@@ -698,6 +698,7 @@ Phone:
 
 - keyboard / fine pointer: 방향키 + SPACE 안내
 - touch / coarse pointer: 시작하기 버튼 + touch hold 안내
+- touch AUTO hold 중 약관 선택·롱프레스 메뉴 차단; MANUAL의 native scroll/selection은 유지
 - corpus profile과 input profile은 분리됨
 - tablet은 desktop corpus를 유지하면서 touch UI를 사용할 수 있음
 - profile은 page load 때 고정되어 orientation change 중 corpus가 교체되지 않음
@@ -807,7 +808,7 @@ CSS 기본 방향:
 해지하기
 → 정말 해지하시겠습니까? (예 / 아니오)
 → 예: 검은 회고 화면
-→ 플립북 인쇄하기
+→ desktop: 플립북 인쇄하기 / phone: 플립북 다운받기
 ```
 
 - `아니오`는 붉고 굵은 테두리, `예`는 회색 테두리로 작은 dark-pattern cue를 구성
@@ -1189,7 +1190,7 @@ v11의 핵심:
 - touch landing start + touch hold to read + native momentum scroll
 - phone vertical mode buttons / compact progress / safe-area aware ending
 - tablet 720px reading measure; desktop 7-column matrix preserved
-- cancellation confirmation → black reflection → fixed PDF print
+- cancellation confirmation → black reflection → desktop PDF print / phone PDF download
 - Apotek progress
 - natural ending / no scrollIntoView jump
 - fixed Prompt C PDF print

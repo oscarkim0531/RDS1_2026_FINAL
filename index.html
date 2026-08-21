@@ -474,7 +474,10 @@
             });
             els.confirmCancelBtn.addEventListener('click', showReflection);
             els.declineCancelBtn.addEventListener('click', closeCancelModal);
-            els.reflectionPrintBtn.addEventListener('click', printFlipbook);
+            els.reflectionPrintBtn.addEventListener(
+                'click',
+                handleFlipbookOutput
+            );
 
             els.cancelModal.addEventListener('click', event => {
                 if (event.target === els.cancelModal) {
@@ -492,9 +495,17 @@
             window.addEventListener('keydown', handleDialogKeyDown);
             window.addEventListener('keyup', handleSpaceUp, { passive: false });
             window.addEventListener('blur', releaseSpaceHold);
-            window.addEventListener('pointerdown', handleTouchHoldStart, { passive: true });
+            window.addEventListener('pointerdown', handleTouchHoldStart, { passive: false });
             window.addEventListener('pointerup', handleTouchHoldEnd, { passive: true });
             window.addEventListener('pointercancel', handleTouchHoldEnd, { passive: true });
+            window.addEventListener(
+                'selectstart',
+                preventAutoTouchTextSelection
+            );
+            window.addEventListener(
+                'contextmenu',
+                preventAutoTouchTextSelection
+            );
 
             els.modeButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -539,6 +550,18 @@
 
             document.documentElement.dataset.inputProfile =
                 state.isTouchExperience ? 'touch' : 'keyboard';
+
+            els.reflectionPrintBtn.textContent =
+                state.isMobileExperience
+                    ? '플립북 다운받기'
+                    : '플립북 인쇄하기';
+
+            els.reflectionPrintBtn.setAttribute(
+                'aria-label',
+                state.isMobileExperience
+                    ? '플립북 PDF 다운받기'
+                    : '플립북 PDF 인쇄하기'
+            );
         }
 
         function getProfiledTraceWords(words) {
@@ -663,6 +686,19 @@
             if (state.endingRevealed) return;
             if (!els.cancelModal.hidden || !els.reflectionLayer.hidden) return;
 
+            if (
+                event.target instanceof Node &&
+                els.textZone.contains(event.target)
+            ) {
+                event.preventDefault();
+            }
+
+            const selection = window.getSelection();
+
+            if (selection && selection.rangeCount > 0) {
+                selection.removeAllRanges();
+            }
+
             state.spaceHeld = true;
             document.documentElement.classList.add('is-holding-space');
         }
@@ -670,6 +706,15 @@
         function handleTouchHoldEnd(event) {
             if (event.pointerType !== 'touch') return;
             releaseSpaceHold();
+        }
+
+        function preventAutoTouchTextSelection(event) {
+            if (!state.isTouchExperience) return;
+            if (!state.systemReady || state.mode !== 'auto') return;
+            if (!(event.target instanceof Node)) return;
+            if (!els.textZone.contains(event.target)) return;
+
+            event.preventDefault();
         }
 
         function handleDialogKeyDown(event) {
@@ -1867,6 +1912,30 @@
                     els.reflectionPrintBtn.focus();
                 }, 760);
             });
+        }
+
+        function handleFlipbookOutput() {
+            if (state.isMobileExperience) {
+                downloadFlipbook();
+                return;
+            }
+
+            printFlipbook();
+        }
+
+        function downloadFlipbook() {
+            saveSessionRecord(true);
+
+            const link = document.createElement('a');
+
+            link.href = CONFIG.pdfFilePath;
+            link.download = 'Cancellation-Terms-Flipbook.pdf';
+            link.rel = 'noopener';
+            link.hidden = true;
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         }
 
         function printFlipbook() {
