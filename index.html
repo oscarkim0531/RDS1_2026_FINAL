@@ -28,12 +28,12 @@
             <div class="mode-selector" id="modeSelector" aria-label="탐색 방식 선택">
                 <button class="mode-option" type="button" data-mode="manual" aria-pressed="false">
                     <span class="mode-option__name">MANUAL</span>
-                    <span class="mode-option__description">전체 약관을 펼친 뒤 직접 스크롤합니다.</span>
+                    <span class="mode-option__description">사용자가 직접 스크롤합니다.</span>
                 </button>
 
                 <button class="mode-option is-selected" type="button" data-mode="auto" aria-pressed="true">
                     <span class="mode-option__name">AUTO</span>
-                    <span class="mode-option__description">생성되는 약관의 흐름을 자동으로 따라갑니다.</span>
+                    <span class="mode-option__description">자동으로 스크롤됩니다.</span>
                 </button>
             </div>
 
@@ -136,8 +136,9 @@
     <section class="reflection-layer" id="reflectionLayer" aria-label="해지 후 질문" hidden>
         <div class="reflection-content">
             <div class="reflection-copy">
-                <p>끝까지 오는 동안, 무엇이 더 선명하게 남았나요?</p>
-                <p>이어지는 약관이었나요, 화면을 가로지른 붉은 단어였나요?</p>
+                <p>화면이 끝까지 스크롤되는 동안, 어떤 것에 집중하셨나요?</p>
+                <p>끝없이 생성되는 약관 텍스트였나요?</p>
+                <p>아니면 튀어나오는 빨간색 단어 블록들이었나요?</p>
             </div>
 
             <button id="reflectionPrintBtn" class="reflection-print-button" type="button">
@@ -742,9 +743,9 @@
 
                 const typingProgress = getTypingProgress();
 
-                // AUTO's percentage and red-word rhythm share the same source:
-                // the amount of middle-layer text that has actually appeared.
-                syncAutoFragmentsToTypingProgress(typingProgress);
+                // Percentage follows all typed text. Red-word rhythm begins
+                // only after the passage enters its accelerated phase.
+                syncAutoFragmentsToTypingProgress();
                 updateInterface(getProgress());
 
                 if (
@@ -798,20 +799,38 @@
             );
         }
 
-        function syncAutoFragmentsToTypingProgress(progress) {
+        function syncAutoFragmentsToTypingProgress() {
             if (state.mode !== 'auto' || state.endingRevealed) return;
             if (!state.traceWords.length) return;
 
-            const targetCount = Math.min(
-                state.traceWords.length,
-                Math.floor(
-                    clamp(progress, 0, 1) *
-                        state.traceWords.length
-                )
+            const accelerationStart = clamp(
+                state.typingAccelerationIndex,
+                0,
+                state.fullCharacters.length
             );
 
+            const acceleratedProgress = clamp(
+                (state.typedIndex - accelerationStart) /
+                    Math.max(
+                        1,
+                        state.fullCharacters.length - accelerationStart
+                    ),
+                0,
+                1
+            );
+
+            const targetCount = acceleratedProgress <= 0
+                ? 0
+                : Math.min(
+                    state.traceWords.length,
+                    1 + Math.floor(
+                        acceleratedProgress *
+                            (state.traceWords.length - 1)
+                    )
+                );
+
             while (state.fragmentCount < targetCount) {
-                generateWordBlock(progress);
+                generateWordBlock(acceleratedProgress);
             }
         }
 
@@ -956,7 +975,7 @@
         function completeTyping() {
             // Ensure the final sheet word lands with the final text characters,
             // never as a separate high-speed burst after the passage.
-            syncAutoFragmentsToTypingProgress(1);
+            syncAutoFragmentsToTypingProgress();
 
             state.typingComplete = true;
             state.typingStarted = false;

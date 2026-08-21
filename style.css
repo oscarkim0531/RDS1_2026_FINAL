@@ -106,7 +106,7 @@ button {
 
 .landing-narrative {
     display: grid;
-    gap: 10px;
+    gap: 0;
 
     font-family:
         "sandoll-myeongjoneo1",
@@ -116,13 +116,15 @@ button {
 }
 
 .landing-title {
-    font-size: clamp(23px, 2vw, 34px);
+    font-size: clamp(42px, 5vw, 72px);
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.035em;
+    line-height: 1;
+    letter-spacing: -0.048em;
 }
 
 .landing-subtitle {
+    margin-top: clamp(68px, 10vh, 108px);
+
     font-size: clamp(14px, 1.1vw, 17px);
     font-weight: 500;
     line-height: 1.45;
@@ -139,8 +141,8 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
 
-    width: min(720px, 100%);
-    margin: clamp(42px, 6vh, 68px) auto 0;
+    width: min(560px, 100%);
+    margin: 16px auto 0;
 
     font-family:
         'JetBrains Mono',
@@ -152,16 +154,18 @@ button {
 
 .mode-option {
     display: grid;
-    gap: 12px;
+    place-items: center;
+    align-content: center;
+    gap: 8px;
 
-    min-height: 112px;
-    padding: 18px;
+    min-height: 84px;
+    padding: 13px 16px;
 
     border: 1px solid rgba(17, 17, 17, 0.28);
     background: transparent;
     color: var(--color-text);
 
-    text-align: left;
+    text-align: center;
     cursor: pointer;
 
     transition:
@@ -182,16 +186,14 @@ button {
 }
 
 .mode-option__name {
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.04em;
 }
 
 .mode-option__description {
-    align-self: end;
-
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: -0.015em;
@@ -759,9 +761,10 @@ html.is-accelerated .scroll-progress {
 
 .ending-actions {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 14px;
 }
 
 .ending-button {
@@ -795,6 +798,12 @@ html.is-accelerated .scroll-progress {
 .ending-button--secondary {
     border: 1px solid rgba(17, 17, 17, 0.58);
     color: var(--color-text);
+
+    padding: 0.62em 0.8em 0.58em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    opacity: 0.58;
 }
 
 .ending-button--primary:hover,
@@ -809,6 +818,7 @@ html.is-accelerated .scroll-progress {
     border-color: var(--color-text);
     background: var(--color-text);
     color: var(--color-bg);
+    opacity: 1;
     outline: none;
 }
 
@@ -961,7 +971,7 @@ html.is-reflecting {
         "Noto Sans KR",
         Arial,
         sans-serif;
-    font-size: clamp(21px, 3vw, 36px);
+    font-size: clamp(19px, 2.3vw, 30px);
     font-weight: 500;
     line-height: 1.55;
     letter-spacing: -0.045em;
