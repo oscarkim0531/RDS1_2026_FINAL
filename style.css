@@ -812,6 +812,189 @@ html.is-accelerated .scroll-progress {
     outline: none;
 }
 
+html.is-modal-open,
+html.is-reflecting {
+    overflow: hidden;
+}
+
+.cancel-modal[hidden],
+.reflection-layer[hidden] {
+    display: none;
+}
+
+.cancel-modal {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-landing) + 10);
+
+    display: grid;
+    place-items: center;
+    padding: 24px;
+
+    background: rgba(17, 17, 17, 0.32);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.22s ease;
+}
+
+.cancel-modal.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cancel-modal__dialog {
+    width: min(460px, calc(100vw - 48px));
+    padding: clamp(28px, 5vw, 42px);
+
+    border: 1px solid rgba(17, 17, 17, 0.72);
+    background: var(--color-bg);
+    color: var(--color-text);
+    text-align: center;
+
+    transform: translateY(7px);
+    transition: transform 0.22s ease;
+}
+
+.cancel-modal.is-visible .cancel-modal__dialog {
+    transform: translateY(0);
+}
+
+.cancel-modal__title {
+    margin-bottom: 30px;
+
+    font-family:
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.035em;
+}
+
+.cancel-modal__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.cancel-choice {
+    min-height: 50px;
+    background: transparent;
+    color: var(--color-text);
+    font-family:
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background-color 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.cancel-choice--yes {
+    border: 1px solid rgba(17, 17, 17, 0.42);
+}
+
+.cancel-choice--no {
+    border: 3px solid var(--color-point);
+    color: var(--color-point);
+}
+
+.cancel-choice--yes:hover,
+.cancel-choice--yes:focus-visible {
+    border-color: var(--color-text);
+    background: var(--color-text);
+    color: var(--color-bg);
+    outline: none;
+}
+
+.cancel-choice--no:hover,
+.cancel-choice--no:focus-visible {
+    background: var(--color-point);
+    color: var(--color-bg);
+    outline: none;
+}
+
+.reflection-layer {
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-landing) + 20);
+
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    padding: clamp(28px, 7vw, 80px);
+
+    background: #050505;
+    color: #f3f3ef;
+    opacity: 0;
+
+    transition: opacity 0.75s ease;
+}
+
+.reflection-layer.is-visible {
+    opacity: 1;
+}
+
+.reflection-content {
+    display: grid;
+    justify-items: center;
+    gap: clamp(38px, 8vh, 72px);
+    width: min(900px, 100%);
+    text-align: center;
+}
+
+.reflection-copy {
+    display: grid;
+    gap: 10px;
+
+    font-family:
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+    font-size: clamp(21px, 3vw, 36px);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: -0.045em;
+}
+
+.reflection-print-button {
+    padding: 0.8em 1.15em 0.76em;
+    border: 1px solid rgba(243, 243, 239, 0.74);
+    background: transparent;
+    color: #f3f3ef;
+
+    font-family:
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+    font-size: clamp(15px, 1.7vw, 19px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    cursor: pointer;
+
+    transition:
+        background-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.reflection-print-button:hover,
+.reflection-print-button:focus-visible {
+    background: #f3f3ef;
+    color: #050505;
+    outline: none;
+}
+
 .hidden-pdf-frame {
     position: fixed;
     width: 1px;
@@ -830,6 +1013,8 @@ html.is-accelerated .scroll-progress {
     .scroll-indicator,
     .scroll-progress,
     .print-trigger-area,
+    .cancel-modal,
+    .reflection-layer,
     .layer-1-active,
     .layer-3-group,
     .full-text-measure,
@@ -845,7 +1030,12 @@ html.is-accelerated .scroll-progress {
     .scroll-progress,
     .scroll-progress__fill,
     .session-record,
-    .ending-button {
+    .ending-button,
+    .cancel-modal,
+    .cancel-modal__dialog,
+    .cancel-choice,
+    .reflection-layer,
+    .reflection-print-button {
         transition: none;
     }
 

@@ -490,9 +490,9 @@ word block region:
 전체 약 9만 자 corpus를 웹에서 전부 재생하면 시간이 지나치게 길어져, Prompt B 웹 버전은 **편집된 corpus**를 사용한다.
 
 현재 편집된 텍스트:
-- 11,634 characters
-- 이전 5,841자 편집본의 약 두 배
-- 전체 전문의 앞부분에서 `[제4조]`가 완결되는 구조적 경계까지 사용
+- 12,222 characters
+- 이전 5,841자 편집본의 두 배보다 조금 긴 분량
+- 전체 전문의 앞부분에서 `[제5조] 렌탈료 지급`의 7개 항이 모두 완결되는 구조적 경계까지 사용
 
 ---
 
@@ -578,8 +578,8 @@ SPACE released → normal current speed
 행동:
 - 사용자가 직접 스크롤
 - 자동 스크롤 없음
+- 타이핑 없이 전체 약관을 처음부터 펼쳐 둠
 - 새 영역을 아래로 통과할 때 word fragment 생성
-- SPACE HOLD로 typing 속도를 느리게 할 수 있음
 - 마지막 100% 도달 후 사용자가 직접 Print 영역으로 이어서 스크롤
 
 개념:
@@ -594,14 +594,14 @@ SPACE released → normal current speed
 
 행동:
 - 시스템이 자동으로 passage를 통과
-- 붉은 word fragment 역시 자동 scroll event에 의해 생성
+- 붉은 word fragment는 스크롤 거리가 아니라 실제 생성된 글자 비율에 따라 120개가 균등하게 생성
 - SPACE HOLD 동안 60 chars/sec로 감속
 - AUTO scroll은 멈추지 않고 실제 타이핑 끝점을 느리게 따라감
 - 읽기 위해 저항한 시간만큼 목적지 도달도 늦어짐
 
 AUTO timing:
 - 고정 56초 passage clock을 사용하지 않음
-- 11,634자 corpus의 실제 생성 끝점을 viewport 75%에서 추적
+- 12,222자 corpus의 실제 생성 끝점을 viewport 75%에서 추적
 - SPACE를 누르면 생성과 스크롤이 함께 느려짐
 - 완료 후 Print handoff는 약 4초
 
@@ -660,6 +660,9 @@ PASSAGE 037%
 - 숫자 + 작은 %만 표시
 - 00 → 99 → 100
 - 3자리 000 형식 사용하지 않음
+- AUTO에서는 스크롤 위치가 아니라 `typedIndex / totalCharacters`로 계산
+- 따라서 첫 화면이 채워지는 동안에도 실제 생성량과 함께 즉시 증가
+- MANUAL에서는 전체 문서가 이미 펼쳐져 있으므로 실제 passage 스크롤 위치로 계산
 
 Typography:
 - **Apotek Bold**
@@ -728,8 +731,22 @@ CSS 기본 방향:
 ## Fragment sentence completion
 
 - 120개 단어는 총 10개의 문장으로 구성됨
-- passage 끝에서 단어 시퀀스가 문장 중간에 멈추면 다음 종결어까지 생성
-- 마지막 문장이 완결된 뒤에만 Print 영역을 unlock
+- AUTO에서는 120개 전체를 텍스트 생성 구간에 균등 분배하여 마지막 글자와 마지막 완결 문장이 함께 도착
+- MANUAL에서 문장 중간에 끝난 경우에만 다음 종결어까지 420ms 간격으로 천천히 완결
+- 마지막 fragment 문장이 완결된 뒤에만 Ending 영역을 unlock
+
+## Cancellation decision flow
+
+```text
+해지하기
+→ 정말 해지하시겠습니까? (예 / 아니오)
+→ 예: 검은 회고 화면
+→ 플립북 인쇄하기
+```
+
+- `아니오`는 붉고 굵은 테두리, `예`는 회색 테두리로 작은 dark-pattern cue를 구성
+- `아니오`는 확인창만 닫고 Ending 영역으로 복귀
+- `예`는 검은 화면에서 연속 약관과 붉은 단어 중 무엇이 남았는지 질문
 
 중요:
 - 갑작스러운 jump 금지
@@ -845,8 +862,8 @@ Website
 ```
 
 Print 영역에는 두 개의 행동이 존재한다.
-- `[ 플립북 인쇄하기 ]`
-- `[ 처음으로 돌아가기 ]` — 페이지 상태를 초기화하고 랜딩으로 복귀
+- `해지하기` — 확인 팝업과 회고 화면을 거친 뒤 인쇄로 연결
+- `처음으로 돌아가기` — 페이지 상태를 초기화하고 랜딩으로 복귀
 
 ---
 
@@ -1076,24 +1093,25 @@ harsh red
 이 Markdown이 생성된 시점에서 가장 최신 개발 버전:
 
 ```text
-Prompt B v9
+Prompt B v10
 index.html
 style.css
 Cancellation-Terms_Hard-copy_Flip-Book.pdf
 ```
 
-v9의 핵심:
+v10의 핵심:
 - MANUAL / AUTO mode
 - AUTO = live typing-edge follow
 - MANUAL = direct scroll
 - SPACE = hold to read at 60 chars/sec without stopping
 - typing 30 → 150 fixed
-- 11,634-character edited corpus
+- 12,222-character edited corpus ending after a complete section
 - typing point 75%
 - bottom 25vh breathing space
 - fragment region 25%–75%
 - 120 ordered words, random positions
-- fragment sequence completes its current sentence before Print unlock
+- AUTO progress and 120 fragments are driven by typed-character ratio
+- cancellation confirmation → black reflection → fixed PDF print
 - Apotek progress
 - natural ending / no scrollIntoView jump
 - fixed Prompt C PDF print
