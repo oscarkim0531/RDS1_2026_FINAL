@@ -167,7 +167,7 @@
 
            4. Fragment vocabulary:
               Restore the original Prompt-B logic. The separate Google Sheet
-              provides the curated ~120 words. They appear in that stored
+              provides the curated 108 words. They appear in that stored
               order, looping from the beginning after the last word, while
               their positions remain random.
 
@@ -233,8 +233,8 @@
             autoScrollDeadZone: 1.5,
             autoScrollFinishTolerancePx: 2,
 
-            // The 120-word sheet contains complete sentences. AUTO distributes
-            // all 120 words across the complete typing span. MANUAL may finish
+            // The 108-word sheet contains complete sentences. AUTO distributes
+            // all 108 words across the accelerated typing span. MANUAL may finish
             // its current sentence at a deliberately slower cadence.
             traceSentenceEndWords: [
                 "않습니다",
@@ -244,7 +244,6 @@
                 "의미합니다",
                 "바랍니다",
                 "반영됩니다",
-                "필요합니다",
                 "수용합니다"
             ],
             fragmentEndingCadenceMs: 420,
@@ -293,9 +292,7 @@
             "숙지하시기", "바랍니다", "정기", "결제", "해지는",
             "최소", "다음", "결제일", "7일", "전까지", "완료되어야",
             "하며", "이후", "신청은", "다음", "달에", "반영됩니다",
-            "일부", "프로모션", "상품의", "경우", "시스템", "구조상",
-            "온라인", "해지가", "불가능하며", "고객센터", "연결이",
-            "필요합니다", "귀하는", "본", "고지", "사항을", "모두",
+            "귀하는", "본", "고지", "사항을", "모두",
             "읽었으며", "해지", "시", "발생하는", "모든", "불이익을",
             "본인의", "책임으로", "수용합니다"
         ];
@@ -1063,7 +1060,7 @@
         }
 
         /* -------------------------------------------------------------
-           04. ORIGINAL ~120-WORD LIST
+           04. CURATED 108-WORD LIST
            Restore the original Prompt-B data behavior:
            Sheet order is preserved; positions are random.
            ------------------------------------------------------------- */
@@ -1302,7 +1299,7 @@
             const blockHeight = block.offsetHeight;
 
             // X is deliberately unrelated to the text source:
-            // the original ~120-word sequence is distributed at random
+            // the curated 108-word sequence is distributed at random
             // across the entire visual field.
             /*
                Horizontal field:

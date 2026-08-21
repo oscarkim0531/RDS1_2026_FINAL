@@ -340,10 +340,10 @@ setInterval(generateWordBlock, 400);
 - 현재 보고 있는 약관 구간에서 직접 단어를 추출하도록 변경
 
 하지만 사용자 피드백:
-> 이것은 필요 없다. 기존처럼 약 120개의 단어가 정해진 순서대로 나오고, 위치만 무작위인 것이 좋다.
+> 이것은 필요 없다. 현재 108개의 단어가 정해진 순서대로 나오고, 위치만 무작위인 것이 좋다.
 
 따라서 현재:
-- Google Sheet의 약 120개 단어 사용
+- Google Sheet의 108개 단어 사용
 - 저장된 순서대로 반복
 - 위치는 랜덤
 - 원문 현재 위치와 직접 데이터 매칭하지 않음
@@ -433,9 +433,9 @@ padding-bottom: 25vh;
 
 ## 데이터
 
-- Google Sheet의 약 120개 단어
+- Google Sheet의 108개 단어
 - 배열 순서대로
-- 1 → 2 → 3 → ... → 120 → 다시 1
+- 1 → 2 → 3 → ... → 108 → 다시 1
 - 단어 자체는 random selection 하지 않음
 - 위치만 random
 
@@ -480,6 +480,7 @@ word block region:
 ### Line
 - 이전 단어 center와 현재 단어 center 연결
 - 시간적 trajectory의 흔적으로 해석
+- 선을 따라 다음 생성 위치를 인지할 수 있도록 `2.2px`, round cap 사용
 - 아직 유지 중
 - 필요하면 향후 제거 가능
 
@@ -595,7 +596,7 @@ SPACE released → normal current speed
 행동:
 - 시스템이 자동으로 passage를 통과
 - 붉은 word fragment는 가속 시작 전에는 생성하지 않음
-- 가속이 시작된 뒤의 생성 구간에만 120개가 균등하게 분배
+- 가속이 시작된 뒤의 생성 구간에만 108개가 균등하게 분배
 - SPACE HOLD 동안 60 chars/sec로 감속
 - AUTO scroll은 멈추지 않고 실제 타이핑 끝점을 느리게 따라감
 - 읽기 위해 저항한 시간만큼 목적지 도달도 늦어짐
@@ -736,8 +737,9 @@ CSS 기본 방향:
 
 ## Fragment sentence completion
 
-- 120개 단어는 총 10개의 문장으로 구성됨
-- AUTO에서는 120개 전체를 가속 이후의 텍스트 생성 구간에 균등 분배하여 마지막 글자와 마지막 완결 문장이 함께 도착
+- 108개 단어는 총 9개의 문장으로 구성됨
+- `일부 프로모션 상품의 경우 … 고객센터 연결이 필요합니다` 문장 12단어는 최신 Sheet에서 제거됨
+- AUTO에서는 108개 전체를 가속 이후의 텍스트 생성 구간에 균등 분배하여 마지막 글자와 마지막 완결 문장이 함께 도착
 - MANUAL에서 문장 중간에 끝난 경우에만 다음 종결어까지 420ms 간격으로 천천히 완결
 - 마지막 fragment 문장이 완결된 뒤에만 Ending 영역을 unlock
 
@@ -753,6 +755,7 @@ CSS 기본 방향:
 - `아니오`는 붉고 굵은 테두리, `예`는 회색 테두리로 작은 dark-pattern cue를 구성
 - `아니오`는 확인창만 닫고 Ending 영역으로 복귀
 - `예`는 검은 화면에서 끝없이 생성되는 `약관 텍스트`와 붉은 단어 블록 중 무엇에 집중했는지 질문
+- 첫 질문과 아래 두 선택 문장 사이에는 별도 수직 간격을 둠
 
 중요:
 - 갑작스러운 jump 금지
@@ -944,7 +947,7 @@ harsh red
 
 # 24. Google Sheet Word Data
 
-약 120개 단어를 별도의 Google Sheet CSV에서 불러온다.
+108개 단어를 별도의 Google Sheet CSV에서 불러온다.
 
 원칙:
 - sheet order 보존
@@ -1067,7 +1070,7 @@ harsh red
 - Website 1의 기능을 대거 다시 합치지 말 것
 - 기업의 기만 / dark pattern 프로젝트로 되돌리지 말 것
 - 새 interaction 여러 개를 동시에 추가하지 말 것
-- 120 word system을 contextual extraction으로 다시 바꾸지 말 것
+- 108 word system을 contextual extraction으로 다시 바꾸지 말 것
 - 전체 9만 자 corpus로 되돌리지 말 것
 - Prompt C PDF를 임의로 수정하지 말 것
 - Session-specific flipbook을 큰 기능으로 추가하지 말 것
@@ -1115,8 +1118,8 @@ v10의 핵심:
 - typing point 75%
 - bottom 25vh breathing space
 - fragment region 25%–75%
-- 120 ordered words, random positions
-- AUTO progress and 120 fragments are driven by typed-character ratio
+- 108 ordered words, random positions
+- AUTO progress and 108 fragments are driven by accelerated typed-character ratio
 - cancellation confirmation → black reflection → fixed PDF print
 - Apotek progress
 - natural ending / no scrollIntoView jump
