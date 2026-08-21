@@ -38,7 +38,11 @@
             </div>
 
             <div class="landing-controls" aria-label="인터랙션 안내">
-                <p class="landing-start">
+                <button id="mobileStartBtn" class="mobile-start-button touch-only" type="button">
+                    시작하기
+                </button>
+
+                <p class="landing-start keyboard-only">
                     <span class="landing-key">← / →</span>
                     <span>모드 선택</span>
                     <span class="landing-separator">·</span>
@@ -46,13 +50,21 @@
                     <span>시작하기</span>
                 </p>
 
-                <p class="landing-hold" data-mode-hint="auto">
+                <p class="landing-hold keyboard-only" data-mode-hint="auto">
                     진행 중에는 <span class="landing-key landing-key--inline">SPACE</span>를
                     누르고 있는 동안 읽는 속도로 느려집니다.
                 </p>
 
-                <p class="landing-hold" data-mode-hint="manual" hidden>
+                <p class="landing-hold keyboard-only" data-mode-hint="manual" hidden>
                     시작하면 전체 약관이 펼쳐집니다. 원하는 속도로 직접 통과하세요.
+                </p>
+
+                <p class="landing-hold touch-only" data-mode-hint="auto">
+                    진행 중 화면을 길게 누르면 읽는 속도로 느려집니다.
+                </p>
+
+                <p class="landing-hold touch-only" data-mode-hint="manual" hidden>
+                    전체 약관을 펼친 뒤, 화면을 밀어 직접 스크롤하세요.
                 </p>
             </div>
         </div>
@@ -120,9 +132,11 @@
     <div class="cancel-modal" id="cancelConfirmModal" hidden>
         <div
             class="cancel-modal__dialog"
+            id="cancelDialog"
             role="dialog"
             aria-modal="true"
             aria-labelledby="cancelConfirmTitle"
+            tabindex="-1"
         >
             <p class="cancel-modal__title" id="cancelConfirmTitle">정말 해지하시겠습니까?</p>
 
@@ -149,7 +163,7 @@
 
     <script>
         /* =============================================================
-           CANCELLATION TERMS — PROMPT B / DEVELOPED v2
+           CANCELLATION TERMS — PROMPT B / RESPONSIVE v11
 
            CORE EXPERIENCE
            -------------------------------------------------------------
@@ -180,6 +194,19 @@
         const CONFIG = {
             googleSheetCsvUrl: "https://docs.google.com/spreadsheets/d/1OYNs-KxfpT-34SjYCfJ6rR-pI21t8VgVcRwsPsEao9Y/export?format=csv&gid=0",
             pdfFilePath: "./Cancellation-Terms_Hard-copy_Flip-Book.pdf",
+
+            /*
+               MOBILE EXPERIENCE PROFILE
+               The shorter corpus closes after the complete monthly Adobe
+               cancellation section. Its 65 words are the first six complete
+               trace sentences, keeping fragment density close to desktop.
+            */
+            mobileBreakpointPx: 767,
+            mobileCorpusEndMarker:
+                "연간 약정, 매월 결제 구독 약관",
+            mobileTraceWordLimit: 65,
+            mobileAutoScrollViewportAnchor: 0.68,
+            mobileTextBottomSpaceRatio: 0.32,
 
             /*
                EDITED WEB CORPUS
@@ -269,8 +296,8 @@
             fragmentFont: {
                 desktopStart: 36,
                 desktopEnd: 46,
-                mobileStart: 29,
-                mobileEnd: 37
+                mobileStart: 25,
+                mobileEnd: 32
             }
         };
 
@@ -299,6 +326,12 @@
 
         const state = {
             systemReady: false,
+
+            // The responsive experience profile is fixed at page load so an
+            // orientation change never replaces the corpus mid-passage.
+            isMobileExperience: false,
+            isTouchExperience: false,
+            experienceProfile: "desktop",
 
             // Layer 2 typing
             fullText: "",
@@ -368,6 +401,7 @@
                 modeSelector: document.getElementById('modeSelector'),
                 modeButtons: Array.from(document.querySelectorAll('.mode-option')),
                 modeHints: Array.from(document.querySelectorAll('[data-mode-hint]')),
+                mobileStartBtn: document.getElementById('mobileStartBtn'),
 
                 dossier: document.querySelector('.dossier-container'),
                 matrix: document.querySelector('.matrix-grid'),
@@ -388,6 +422,7 @@
                 restartBtn: document.getElementById('restartExperienceBtn'),
 
                 cancelModal: document.getElementById('cancelConfirmModal'),
+                cancelDialog: document.getElementById('cancelDialog'),
                 confirmCancelBtn: document.getElementById('confirmCancelBtn'),
                 declineCancelBtn: document.getElementById('declineCancelBtn'),
                 reflectionLayer: document.getElementById('reflectionLayer'),
@@ -401,6 +436,7 @@
 
             window.scrollTo(0, 0);
 
+            configureResponsiveExperience();
             prepareTypingCorpus();
             createFullTextMeasure();
             measureFullTextHeight();
@@ -433,6 +469,9 @@
 
             els.cancellationBtn.addEventListener('click', openCancelModal);
             els.restartBtn.addEventListener('click', restartExperience);
+            els.mobileStartBtn.addEventListener('click', () => {
+                beginExperience(state.selectedMode);
+            });
             els.confirmCancelBtn.addEventListener('click', showReflection);
             els.declineCancelBtn.addEventListener('click', closeCancelModal);
             els.reflectionPrintBtn.addEventListener('click', printFlipbook);
@@ -453,6 +492,9 @@
             window.addEventListener('keydown', handleDialogKeyDown);
             window.addEventListener('keyup', handleSpaceUp, { passive: false });
             window.addEventListener('blur', releaseSpaceHold);
+            window.addEventListener('pointerdown', handleTouchHoldStart, { passive: true });
+            window.addEventListener('pointerup', handleTouchHoldEnd, { passive: true });
+            window.addEventListener('pointercancel', handleTouchHoldEnd, { passive: true });
 
             els.modeButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -465,10 +507,60 @@
         /* -------------------------------------------------------------
            01. LANDING
            ------------------------------------------------------------- */
+        function configureResponsiveExperience() {
+            const narrowViewport = window.matchMedia(
+                `(max-width: ${CONFIG.mobileBreakpointPx}px)`
+            ).matches;
+
+            const coarsePhoneLandscape =
+                window.matchMedia('(pointer: coarse)').matches &&
+                Math.min(screen.width, screen.height) <= 600;
+
+            const coarsePointer = window.matchMedia(
+                '(pointer: coarse)'
+            ).matches;
+
+            state.isMobileExperience =
+                narrowViewport || coarsePhoneLandscape;
+
+            state.experienceProfile = state.isMobileExperience
+                ? 'mobile'
+                : 'desktop';
+
+            state.isTouchExperience =
+                narrowViewport || coarsePointer;
+
+            state.traceWords = getProfiledTraceWords(
+                FALLBACK_TRACE_WORDS
+            );
+
+            document.documentElement.dataset.experienceProfile =
+                state.experienceProfile;
+
+            document.documentElement.dataset.inputProfile =
+                state.isTouchExperience ? 'touch' : 'keyboard';
+        }
+
+        function getProfiledTraceWords(words) {
+            const cleanedWords = words
+                .map(word => String(word).trim())
+                .filter(Boolean);
+
+            if (!state.isMobileExperience) {
+                return cleanedWords;
+            }
+
+            return cleanedWords.slice(
+                0,
+                CONFIG.mobileTraceWordLimit
+            );
+        }
+
         function startLandingSequence() {
             /*
                The landing never advances on a timer.
-               The visitor must consciously press SPACE after reading it.
+               The visitor must consciously use SPACE or the touch start
+               button after reading it.
             */
             requestAnimationFrame(() => {
                 els.guide.classList.add('is-visible');
@@ -565,6 +657,21 @@
             document.documentElement.classList.remove('is-holding-space');
         }
 
+        function handleTouchHoldStart(event) {
+            if (event.pointerType !== 'touch') return;
+            if (!state.systemReady || state.mode !== 'auto') return;
+            if (state.endingRevealed) return;
+            if (!els.cancelModal.hidden || !els.reflectionLayer.hidden) return;
+
+            state.spaceHeld = true;
+            document.documentElement.classList.add('is-holding-space');
+        }
+
+        function handleTouchHoldEnd(event) {
+            if (event.pointerType !== 'touch') return;
+            releaseSpaceHold();
+        }
+
         function handleDialogKeyDown(event) {
             if (event.key !== 'Escape' || els.cancelModal.hidden) return;
 
@@ -618,9 +725,28 @@
             // Keep every piece of source content, while removing only HTML
             // indentation/newline whitespace that was not semantically part
             // of the terms.
-            state.fullText = els.textBase.textContent
+            const sourceText = els.textBase.textContent
                 .replace(/\s+/g, ' ')
                 .trim();
+
+            if (state.isMobileExperience) {
+                const mobileEndIndex = sourceText.indexOf(
+                    CONFIG.mobileCorpusEndMarker
+                );
+
+                if (mobileEndIndex > 0) {
+                    state.fullText = sourceText
+                        .slice(0, mobileEndIndex)
+                        .trim();
+                } else {
+                    state.fullText = sourceText;
+                    console.warn(
+                        '[Cancellation Terms] mobile corpus marker not found; desktop corpus is active.'
+                    );
+                }
+            } else {
+                state.fullText = sourceText;
+            }
 
             // Array.from keeps Korean syllable blocks as Unicode characters
             // instead of decomposing them into jamo.
@@ -855,11 +981,15 @@
             const caretBottomDocument =
                 caretRect.bottom + window.scrollY;
 
+            const viewportAnchor = state.isMobileExperience
+                ? CONFIG.mobileAutoScrollViewportAnchor
+                : CONFIG.autoScrollViewportAnchor;
+
             return Math.max(
                 0,
                 caretBottomDocument -
                     window.innerHeight *
-                        CONFIG.autoScrollViewportAnchor
+                        viewportAnchor
             );
         }
 
@@ -1054,7 +1184,10 @@
                 window.innerHeight,
                 Math.ceil(
                     els.fullTextMeasure.scrollHeight +
-                    window.innerHeight * 0.25
+                    window.innerHeight *
+                        (state.isMobileExperience
+                            ? CONFIG.mobileTextBottomSpaceRatio
+                            : 0.25)
                 )
             );
         }
@@ -1082,10 +1215,12 @@
                     .filter(Boolean);
 
                 if (loadedWords.length > 0) {
-                    state.traceWords = loadedWords;
+                    state.traceWords = getProfiledTraceWords(
+                        loadedWords
+                    );
                     state.wordIndex = state.fragmentCount === 0
                         ? 0
-                        : state.wordIndex % loadedWords.length;
+                        : state.wordIndex % state.traceWords.length;
                 }
 
                 console.info(
@@ -1473,13 +1608,17 @@
 
         function saveSessionRecord(force = false) {
             const record = {
-                version: 'prompt-b-developed-v3-2026-08',
+                version: 'prompt-b-responsive-v11-2026-08',
                 startedAt: state.startedAt,
                 recordedAt: new Date().toISOString(),
                 progress: Number(state.maxProgress.toFixed(4)),
                 furthestScrollY: Math.round(state.furthestScrollY),
                 fragmentCount: state.fragmentCount,
-                mode: state.mode
+                mode: state.mode,
+                experienceProfile: state.experienceProfile,
+                inputProfile: state.isTouchExperience ? 'touch' : 'keyboard',
+                corpusCharacters: state.fullCharacters.length,
+                traceWordCount: state.traceWords.length
             };
 
             if (
@@ -1692,7 +1831,7 @@
 
             requestAnimationFrame(() => {
                 els.cancelModal.classList.add('is-visible');
-                els.confirmCancelBtn.focus();
+                els.cancelDialog.focus();
             });
         }
 

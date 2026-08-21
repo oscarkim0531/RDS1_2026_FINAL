@@ -537,19 +537,25 @@ end
 
 ---
 
-# 12. SPACE — Hold to Read
+# 12. Hold to Read — Keyboard / Touch
 
 현재 중요한 인터랙션.
 
 ## 의미
 
 사용자는 시스템의 흐름을 그대로 따라가거나,
-읽고 싶다면 SPACE를 누르고 있어야 한다.
+읽고 싶다면 현재 입력 장치에 맞는 hold 동작을 유지해야 한다.
 
 ### 진행 중 SPACE HOLD
 ```text
 SPACE held → 가속 구간을 60 chars/sec로 감속 (초반 30 chars/sec 구간은 유지)
 SPACE released → normal current speed
+```
+
+### 모바일 TOUCH HOLD
+```text
+screen held → 가속 구간을 60 chars/sec로 감속
+touch released / cancelled → 150 chars/sec로 복귀
 ```
 
 즉:
@@ -597,7 +603,7 @@ SPACE released → normal current speed
 - 시스템이 자동으로 passage를 통과
 - 붉은 word fragment는 가속 시작 전에는 생성하지 않음
 - 가속이 시작된 뒤의 생성 구간에만 108개가 균등하게 분배
-- SPACE HOLD 동안 60 chars/sec로 감속
+- 데스크톱 SPACE HOLD / 모바일 TOUCH HOLD 동안 60 chars/sec로 감속
 - AUTO scroll은 멈추지 않고 실제 타이핑 끝점을 느리게 따라감
 - 읽기 위해 저항한 시간만큼 목적지 도달도 늦어짐
 
@@ -606,6 +612,11 @@ AUTO timing:
 - 12,222자 corpus의 실제 생성 끝점을 viewport 75%에서 추적
 - SPACE를 누르면 생성과 스크롤이 함께 느려짐
 - 완료 후 Print handoff는 약 4초
+
+모바일 profile:
+- 7,222자 corpus의 실제 생성 끝점을 viewport 68%에서 추적
+- 65개 단어를 가속 이후 구간에 균등 분배
+- 마지막 단어는 6번째 완결 문장의 `않습니다`
 
 개념:
 > 시스템이 나를 약관의 끝까지 데려간다.
@@ -638,6 +649,14 @@ Layout:
 SPACE : 시작
 ```
 
+모바일:
+```text
+mode button tap → 모드 선택
+시작하기 button tap → 시작
+AUTO 중 화면 hold → 읽는 속도로 감속
+MANUAL 중 native touch / momentum scroll → passage 진행
+```
+
 진행 중:
 ```text
 SPACE를 누르고 있는 동안 흐름이 느려집니다.
@@ -648,8 +667,47 @@ SPACE를 누르고 있는 동안 흐름이 느려집니다.
 
 중요:
 - Landing은 timer로 자동 종료되지 않음
-- 사용자가 SPACE를 눌러야만 시작
+- 데스크톱은 SPACE, 모바일은 명시적인 시작하기 버튼으로만 시작
 - 사용자가 랜딩의 의미와 인터랙션을 인지한 뒤 경험에 진입
+
+---
+
+# 14.1 Responsive Experience Profile
+
+반응형은 단순 CSS 축소가 아니라 viewport와 입력 방식에 맞는 두 층의 profile로 구성한다.
+
+## Corpus profile
+
+Desktop / tablet:
+- 12,222 characters
+- 108 ordered words / 9 complete sentences
+- text bottom breathing space 25vh
+- AUTO typing point 75%
+
+Phone:
+- 7,222 characters
+- `연간 약정, 매월 결제 구독 약관` 직전에서 절단
+- 첫 월정액 Adobe 취소 조항이 완결된 상태로 종료
+- 65 ordered words / first 6 complete sentences
+- text bottom breathing space 32dvh
+- AUTO typing point 68%
+
+65개는 임의 감소가 아니다. `7,222 / 12,222`의 corpus 비율과 유사한 fragment 밀도를 유지하면서 문장을 완결할 수 있는 경계다.
+
+## Input profile
+
+- keyboard / fine pointer: 방향키 + SPACE 안내
+- touch / coarse pointer: 시작하기 버튼 + touch hold 안내
+- corpus profile과 input profile은 분리됨
+- tablet은 desktop corpus를 유지하면서 touch UI를 사용할 수 있음
+- profile은 page load 때 고정되어 orientation change 중 corpus가 교체되지 않음
+
+## Layout breakpoints
+
+- `≤ 767px`: phone layout, mode buttons vertical, full-width text, compact progress
+- `768–1023px`: tablet text width 최대 720px, 오른쪽 정렬된 breathing space
+- `≥ 1024px`: 기존 7-column desktop matrix
+- `dvh`와 safe-area inset을 사용해 작은 iPhone 및 홈 인디케이터 영역 대응
 
 ---
 
@@ -939,7 +997,10 @@ harsh red
 - resize 시 layer / SVG geometry recalculation
 - PDF print 실패 시 fallback 가능
 - `prefers-reduced-motion` 고려
-- mobile layout이 완전히 깨지지 않게 유지
+- mobile corpus / trace sequence는 반드시 문장 경계에서 완결
+- touch scroll의 native momentum을 막지 않음
+- orientation change 중 profile과 corpus를 교체하지 않음
+- phone safe-area와 `100dvh` 유지
 - Adobe Fonts kit 유지
 - external Google Sheet load 실패 시 fallback vocabulary 유지 가능
 
@@ -948,6 +1009,10 @@ harsh red
 # 24. Google Sheet Word Data
 
 108개 단어를 별도의 Google Sheet CSV에서 불러온다.
+
+Profile:
+- desktop / tablet: 108개 전부
+- phone: 앞 65개(6번째 문장 종결어까지)
 
 원칙:
 - sheet order 보존
@@ -1102,13 +1167,13 @@ harsh red
 이 Markdown이 생성된 시점에서 가장 최신 개발 버전:
 
 ```text
-Prompt B v10
+Prompt B v11
 index.html
 style.css
 Cancellation-Terms_Hard-copy_Flip-Book.pdf
 ```
 
-v10의 핵심:
+v11의 핵심:
 - MANUAL / AUTO mode
 - AUTO = live typing-edge follow
 - MANUAL = direct scroll
@@ -1120,6 +1185,10 @@ v10의 핵심:
 - fragment region 25%–75%
 - 108 ordered words, random positions
 - AUTO progress and 108 fragments are driven by accelerated typed-character ratio
+- phone profile = 7,222 characters / 65 ordered words / 68% typing anchor
+- touch landing start + touch hold to read + native momentum scroll
+- phone vertical mode buttons / compact progress / safe-area aware ending
+- tablet 720px reading measure; desktop 7-column matrix preserved
 - cancellation confirmation → black reflection → fixed PDF print
 - Apotek progress
 - natural ending / no scrollIntoView jump
